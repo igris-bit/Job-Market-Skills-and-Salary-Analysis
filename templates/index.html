@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore job-market skills, job roles, companies, locations and experience requirements in an India-focused job listing dataset.">
+    <title>Job Market Skills and Salary Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <p class="eyebrow">CAREER &amp; LABOUR MARKET ANALYTICS</p>
+        <h1>Job Market Skills and Salary Analysis</h1>
+        <p>Turn job listings into clearer career signals.</p>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>About this project</h2>
+            <p>This dashboard explores skills, roles, companies, locations and experience requirements mentioned in job advertisements. Results describe the supplied dataset, not the entire job market.</p>
+            <p class="data-note">Dataset: Naukri data-science job listings supplied with this project. Salary values are not included in the current dataset.</p>
+        </section>
+
+        <section>
+            <h2>Dataset overview</h2>
+            <div class="stats-grid">
+                <article class="stat-card"><span>Total listings</span><strong id="totalJobs">Loading…</strong></article>
+                <article class="stat-card"><span>Unique roles</span><strong id="totalRoles">Loading…</strong></article>
+                <article class="stat-card"><span>Companies</span><strong id="totalCompanies">Loading…</strong></article>
+                <article class="stat-card"><span>Location strings</span><strong id="totalLocations">Loading…</strong></article>
+            </div>
+        </section>
+
+        <div class="insights-grid">
+            <section><h2>Most common skills</h2><ul id="skillsList" class="ranked-list"><li>Loading skills…</li></ul></section>
+            <section><h2>Popular job roles</h2><ul id="rolesList" class="ranked-list"><li>Loading roles…</li></ul></section>
+            <section><h2>Top companies</h2><ul id="companiesList" class="ranked-list"><li>Loading companies…</li></ul></section>
+            <section><h2>Popular locations</h2><ul id="locationsList" class="ranked-list"><li>Loading locations…</li></ul></section>
+        </div>
+
+        <section>
+            <h2>Experience analysis</h2>
+            <div class="experience-grid">
+                <p><span>Valid experience ranges</span><strong id="validExperience">Loading…</strong></p>
+                <p><span>Average minimum</span><strong id="averageMinimum">Loading…</strong></p>
+                <p><span>Average maximum</span><strong id="averageMaximum">Loading…</strong></p>
+            </div>
+            <p class="muted">Experience averages use records formatted as a valid minimum-maximum year range.</p>
+        </section>
+
+        <section>
+            <h2>Search job listings</h2>
+            <form id="searchForm">
+                <div class="field"><label for="role">Job role</label><select id="role"><option value="">All job roles</option></select></div>
+                <div class="field"><label for="location">Location</label><select id="location"><option value="">All locations</option></select></div>
+                <div class="field"><label for="company">Company</label><select id="company"><option value="">All companies</option></select></div>
+                <div class="form-actions"><button type="submit" id="searchButton">Search jobs</button><button type="button" id="resetButton" class="secondary">Reset</button></div>
+            </form>
+            <p id="searchMessage" class="status-message" role="status" aria-live="polite"></p>
+            <ul id="jobsList" class="job-results"></ul>
+            <div class="pagination">
+                <button type="button" id="previousPage" class="secondary" disabled>Previous</button>
+                <span id="pageStatus">Page 0 of 0</span>
+                <button type="button" id="nextPage" class="secondary" disabled>Next</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Salary analysis</h2>
+            <p>Salary analysis is currently unavailable because the supplied CSV does not contain salary values. Add a verified salary field or a separate documented dataset before drawing salary conclusions.</p>
+        </section>
+    </main>
+
+    <footer><p>Job Market Skills and Salary Analysis · Python, Pandas and Flask</p><p id="apiStatus">Checking application status…</p></footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+</html>

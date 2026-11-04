@@ -1,0 +1,228 @@
+
+/* ---------- General ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #263247;
+    line-height: 1.7;
+}
+
+.container,
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* ---------- Header ---------- */
+header {
+    background: #1d4ed8;
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #dbeafe;
+    font-size: 16px;
+}
+
+/* ---------- Sections ---------- */
+section {
+    background: white;
+    margin: 24px 0;
+    padding: 26px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+section h2 {
+    color: #1d4ed8;
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #eaf0ff;
+}
+
+section p {
+    margin-bottom: 10px;
+}
+
+/* ---------- Lists ---------- */
+ul {
+    padding-left: 24px;
+}
+
+li {
+    padding: 5px 0;
+}
+
+li::marker {
+    color: #2563eb;
+}
+
+/* ---------- Search form ---------- */
+#searchForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+}
+
+#searchForm label {
+    font-weight: 600;
+    color: #334155;
+}
+
+#searchForm select,
+#searchForm input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #263247;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#searchForm select:focus,
+#searchForm input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+#searchForm button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#searchForm button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+#searchForm #resetButton {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+#searchForm #resetButton:hover {
+    background: #cbd5e1;
+}
+
+/* ---------- Search results ---------- */
+#searchResults,
+#jobsList {
+    margin-top: 18px;
+}
+
+#searchResults li,
+#jobsList li {
+    list-style-position: inside;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 9px 0;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 24px 15px;
+    margin-top: 35px;
+    background: #172554;
+    color: #dbeafe;
+    font-size: 14px;
+}
+
+/* ---------- Mobile screens ---------- */
+@media (max-width: 600px) {
+    header {
+        padding: 27px 15px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .container,
+    main {
+        width: 94%;
+        margin: 18px auto;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    #searchForm {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Deployment-ready dashboard refinements */
+:root { color-scheme: light; }
+.eyebrow { font-size: 0.78rem; letter-spacing: .16em; font-weight: 700; margin-bottom: 10px; }
+.intro .data-note, .muted { color: #64748b; font-size: .92rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.stat-card { background: linear-gradient(145deg, #eff6ff, #f8fafc); border: 1px solid #dbeafe; border-radius: 12px; padding: 18px; display: grid; gap: 7px; }
+.stat-card span, .experience-grid span { color: #64748b; font-size: .9rem; }
+.stat-card strong { font-size: clamp(1.35rem, 3vw, 2rem); color: #1d4ed8; overflow-wrap: anywhere; }
+.insights-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 22px; }
+.ranked-list { list-style: none; padding: 0; }
+.ranked-list li { display: flex; justify-content: space-between; align-items: start; gap: 12px; border-bottom: 1px solid #edf2f7; padding: 9px 0; overflow-wrap: anywhere; }
+.ranked-list li:last-child { border-bottom: 0; }
+.ranked-list li strong { color: #1d4ed8; font-variant-numeric: tabular-nums; }
+.experience-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.experience-grid p { display: grid; gap: 6px; background: #f8fafc; border-radius: 10px; padding: 16px; }
+.experience-grid strong { font-size: 1.2rem; }
+.field { display: grid; gap: 6px; }
+.form-actions { display: flex; gap: 10px; align-items: end; }
+#searchForm .secondary, .pagination .secondary { background: #e2e8f0; color: #334155; }
+#searchForm .secondary:hover, .pagination .secondary:hover:not(:disabled) { background: #cbd5e1; }
+.status-message { margin-top: 16px; color: #475569; }
+.job-results { list-style: none; padding: 0; }
+.job-card h3 { color: #1e40af; margin-bottom: 5px; }
+.job-card p { overflow-wrap: anywhere; }
+.job-card .job-meta { color: #64748b; font-size: .92rem; margin-bottom: 8px; }
+.pagination { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 18px; }
+.pagination button { padding: 9px 14px; border: 0; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.pagination button:disabled { opacity: .45; cursor: not-allowed; }
+footer p + p { margin-top: 5px; color: #bfdbfe; font-size: .85rem; }
+@media (max-width: 760px) {
+    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .insights-grid { grid-template-columns: 1fr; }
+    .experience-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    header h1 { font-size: 1.55rem; }
+    .stats-grid { gap: 9px; }
+    .stat-card { padding: 13px; }
+    .form-actions { align-items: stretch; flex-direction: column; }
+    .pagination { gap: 9px; font-size: .9rem; }
+}
