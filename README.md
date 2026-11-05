@@ -1,20 +1,48 @@
-# Job Market Skills and Salary Analysis
+# Job Market Skills & Salary Analysis
 
-A Flask + Pandas dashboard for exploring job listings: commonly mentioned skills, popular roles, companies, locations, experience ranges, and filtered job records.
+A responsive Flask + Pandas dashboard for exploring skills, standardized job-role families, companies, locations and experience requirements in a 12,000-row Naukri job-listing dataset.
 
-> **Data limitation:** the included CSV does not contain salary values. The salary endpoint intentionally reports salary analysis as unavailable instead of estimating or fabricating salary figures.
+> **Salary limitation:** the supplied CSV has no salary field. The application explicitly reports salary analysis as unavailable and does not estimate or fabricate salary values.
 
-## Features
+## What's improved
 
-- Dashboard overview for listing, role, company, and location counts
-- Top skills, roles, companies, and locations
-- Summary of valid job-experience ranges
-- Search by role, location, and company
-- Server-side pagination for search results
-- Dataset validation, missing-value cleanup, and duplicate removal
-- Dataset loaded once per worker and reused for requests
-- Health endpoint for deployment checks
-- Responsive HTML/CSS/JavaScript frontend
+- Frequency rankings are explicitly sorted by count, descending, with alphabetical tie-breaking.
+- City aliases are normalized (for example Bangalore/Bengaluru → Bengaluru).
+- Delhi NCR is available as a regional filter that includes Delhi, Gurugram, Noida and Greater Noida, while individual cities remain selectable.
+- Job-role dropdowns use a conservative role-family taxonomy. Original job titles are preserved and shown on each listing.
+- Unknown or noisy titles are grouped as `Other / Unclassified` instead of polluting the filter list.
+- Search filters use searchable browser suggestions (datalist), so long lists are easier to navigate.
+- Search supports pagination and page sizes of 25, 50 or 100.
+- Empty, loading and error states are shown in the interface.
+- Exact duplicate rows are removed. Search results group matching role-family/company/city/experience combinations into one card and show how many source records were grouped; they are not deleted from the dataset.
+
+## Data-cleaning policy
+
+### Locations
+
+The app normalizes common aliases such as:
+
+- Bangalore, Bengaluru, Bangalore/Bengaluru → Bengaluru
+- Hyderabad, Hyderabad/Secunderabad → Hyderabad
+- Gurgaon, Gurugram, Gurgaon/Gurugram → Gurugram
+- New Delhi, Delhi / NCR, Delhi NCR and the observed typo DELH NCR → Delhi
+- Mumbai (All Areas) → Mumbai
+
+Delhi NCR is a region filter spanning Delhi, Gurugram, Noida and Greater Noida. It is not a replacement for the individual city values. Unknown location strings are retained rather than guessed.
+
+### Job roles
+
+The app classifies recognizable titles into broad role families (Data Engineer, Data Scientist, Data Analyst, Business Analyst, Software Engineer / Developer, etc.). The raw `Job_Role` field is retained. Titles that cannot be confidently classified are grouped under `Other / Unclassified` for filtering; the original title remains visible in search results.
+
+This is a transparent heuristic taxonomy, not a machine-learning classifier. Review the patterns in `ROLE_PATTERNS` in `app.py` and extend them when new legitimate role families appear.
+
+### Repeated job records
+
+The dataset contains no stable job ID, posting date or source URL. Therefore identical title/company/location/experience combinations cannot be proven to be duplicate advertisements. Exact identical rows are removed. Search results visually group matching standardized role/company/city/experience combinations and show the number of source records represented. The underlying records remain in the CSV and are not deleted.
+
+### Skills
+
+Common spelling and abbreviation aliases are normalized. Generic labels such as `IT Skills` are excluded from the top-skill ranking. Skill extraction still depends on the source's comma-separated `Skills/Description` field.
 
 ## Project structure
 
@@ -25,6 +53,7 @@ A Flask + Pandas dashboard for exploring job listings: commonly mentioned skills
 ├── requirements.txt
 ├── Procfile
 ├── render.yaml
+├── README.md
 ├── templates/
 │   └── index.html
 └── static/
@@ -32,11 +61,9 @@ A Flask + Pandas dashboard for exploring job listings: commonly mentioned skills
     └── js/script.js
 ```
 
-The `reference and content/` folder contains supporting academic/report files and is not required to run the web application.
-
 ## Run locally
 
-Requires Python 3.10 or newer.
+Requires Python 3.10+.
 
 ### Windows PowerShell
 
@@ -50,75 +77,58 @@ python app.py
 
 Open <http://127.0.0.1:5000>.
 
-If PowerShell blocks environment activation, you can run `.venv\Scripts\python.exe -m pip install -r requirements.txt` and `.venv\Scripts\python.exe app.py` instead.
-
 ### macOS / Linux
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
+pip install -r requirements.txt
 python app.py
 ```
 
-For local debugging only, set `FLASK_DEBUG=1`. Debug mode is off by default.
-
 ## API endpoints
 
-| Endpoint | Purpose |
+| Endpoint | Description |
 |---|---|
 | `/` | Dashboard |
-| `/api/health` | Dataset and application health |
-| `/api/overview` | Overall counts |
-| `/api/skills` | Top 15 extracted skills |
-| `/api/roles` | Top 10 job roles |
+| `/api/health` | Dataset/application health |
+| `/api/overview` | Total listings, role families, companies and normalized cities |
+| `/api/skills` | Top 15 skills by frequency |
+| `/api/roles` | Top standardized role families by frequency |
 | `/api/companies` | Top 10 companies |
-| `/api/locations` | Top 10 location tokens |
+| `/api/locations` | Top 10 normalized cities |
 | `/api/experience` | Valid experience range summary |
-| `/api/options` | Role, company, and location options for search |
-| `/api/jobs` | Filtered job records with pagination |
+| `/api/options` | Search suggestions for roles, cities/regions and companies |
+| `/api/jobs` | Grouped filtered listings with pagination |
 | `/api/salary` | Explicit salary-data availability status |
 
-Example search:
+Example:
 
 ```text
-/api/jobs?role=data%20scientist&location=Bangalore&page=1&per_page=25
+/api/jobs?role=Data%20Engineer&location=Bengaluru&page=1&per_page=25
 ```
 
-`page` defaults to `1`; `per_page` defaults to `25` and is capped at `100`. Supported filters are `role`, `location`, and `company`. Search terms are treated as literal text, not regular expressions.
+Supported filters: `role`, `location`, `company`, `page`, `per_page`.
 
 ## Deploy to Render
 
-1. Push the complete project to a GitHub repository.
-2. In Render, choose **New + → Web Service** and connect the repository.
-3. Use these settings:
-   - **Runtime:** Python 3
-   - **Build command:** `pip install -r requirements.txt`
-   - **Start command:** `gunicorn app:app`
-   - **Root directory:** leave blank when `app.py`, `requirements.txt`, and the CSV are in the repository root.
-4. Deploy and wait for the build to finish.
-5. Visit `/api/health` on your deployed service. A healthy response includes `"status": "ok"` and the number of records loaded.
-6. Open the root URL and test dashboard metrics, dropdowns, filtering, and pagination.
+The included `render.yaml` configures a Python web service.
 
-`render.yaml` is included as an optional Blueprint configuration. If using it, choose Render's Blueprint flow.
+- Build command: `pip install -r requirements.txt`
+- Start command: `gunicorn app:app`
+- Health check path: `/api/health`
 
-## Data quality notes
+Connect the repository to Render as a Web Service or use the Blueprint flow for `render.yaml`. Ensure the CSV is committed at the repository root.
 
-- The app verifies that the CSV contains the five required columns before processing it.
-- Blank required job roles and company names are excluded; duplicate rows are removed.
-- Skill names receive conservative whitespace cleanup and a small set of common alias normalizations. This does not replace a more rigorous taxonomy.
-- Location counts are based on location strings/tokens in the dataset. City naming may vary between listings.
-- Experience averages include only ranges written as `minimum-maximum` whole numbers.
-- Findings describe this dataset and its collection scope. They should not be presented as a census of all jobs in India.
+## Important interpretation notes
 
-## Troubleshooting
+- Counts describe this 12,000-row supplied dataset, not all job openings in India.
+- Location rankings count normalized city mentions. A listing naming multiple cities contributes to each named city.
+- The Delhi NCR region filter can include one listing in multiple constituent city filters. Do not add regional and city counts together.
+- Broad role-family counts are based on keyword rules and should be reviewed as the taxonomy evolves.
+- The CSV has no salary field, job ID, posting date or listing URL. Salary trends and definitive advertisement-level deduplication are therefore not possible from this file alone.
 
-- **Build fails:** inspect Render's build logs and confirm the CSV and `requirements.txt` are committed.
-- **Application fails to start:** confirm the start command is `gunicorn app:app` and that `app.py` defines `app = Flask(__name__)`.
-- **Health endpoint returns 500:** check that the CSV filename and required column names match exactly.
-- **Dashboard data does not load:** open browser Developer Tools → Network and Console to check failed requests.
-- **Large dataset changes:** redeploy after committing the updated CSV; each worker caches its own in-memory copy.
+## Dataset provenance
 
-## License and source
-
-Add the dataset's original source, collection date, and any applicable license/usage terms before publishing the project publicly. Do not claim a license unless you have confirmed it.
+Before public submission, document the original dataset URL/source, date collected, and its applicable license or usage terms. Do not claim a license without verifying it.

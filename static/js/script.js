@@ -1,171 +1,168 @@
-const PAGE_SIZE = 25;
-let currentPage = 1;
-let currentFilters = { role: "", location: "", company: "" };
-let totalPages = 0;
+const state = { page: 1, pages: 0, filters: { role: "", location: "", company: "" }, pageSize: 25 };
 
-async function getData(endpoint) {
-    const response = await fetch(`/api/${endpoint}`);
-    if (!response.ok) {
-        throw new Error(`Unable to load ${endpoint} (${response.status})`);
-    }
-    return response.json();
+async function api(path) {
+  const response = await fetch(`/api/${path}`);
+  if (!response.ok) throw new Error(`${path} returned ${response.status}`);
+  return response.json();
 }
 
-function showList(elementId, data) {
-    const list = document.getElementById(elementId);
-    list.replaceChildren();
-    const entries = Object.entries(data || {});
-    if (!entries.length) {
-        const item = document.createElement("li");
-        item.textContent = "No data available.";
-        list.appendChild(item);
-        return;
-    }
-    entries.forEach(([name, count], index) => {
-        const item = document.createElement("li");
-        const label = document.createElement("span");
-        const value = document.createElement("strong");
-        label.textContent = name;
-        value.textContent = count;
-        item.append(label, value);
-        item.style.setProperty("--rank", index + 1);
-        list.appendChild(item);
-    });
+function formatNumber(value) {
+  return Number(value || 0).toLocaleString("en-IN");
 }
 
-function fillSelect(id, values) {
-    const select = document.getElementById(id);
-    const firstOption = select.options[0];
-    select.replaceChildren(firstOption);
-    values.forEach(value => {
-        const option = document.createElement("option");
-        option.value = value;
-        option.textContent = value;
-        select.appendChild(option);
-    });
+function renderRanking(id, data) {
+  const list = document.getElementById(id);
+  list.replaceChildren();
+  // Sort again in the browser as a defensive guarantee.
+  const entries = Object.entries(data || {}).sort((a, b) =>
+    Number(b[1]) - Number(a[1]) || a[0].localeCompare(b[0])
+  );
+  if (!entries.length) {
+    const li = document.createElement("li");
+    li.textContent = "No data available.";
+    list.append(li);
+    return;
+  }
+  entries.forEach(([name, count]) => {
+    const li = document.createElement("li");
+    const label = document.createElement("span");
+    const value = document.createElement("strong");
+    label.textContent = name;
+    value.textContent = formatNumber(count);
+    li.append(label, value);
+    list.append(li);
+  });
 }
 
-async function loadDropdowns() {
-    const options = await getData("options");
-    fillSelect("role", options.roles);
-    fillSelect("location", options.locations);
-    fillSelect("company", options.companies);
+function populateSelect(id, values, firstLabel) {
+  const select = document.getElementById(id);
+  select.replaceChildren(new Option(firstLabel, ""));
+  (values || []).forEach(value => select.add(new Option(value, value)));
 }
 
-async function loadPage() {
-    try {
-        const [overview, skills, roles, companies, locations, experience, health] =
-            await Promise.all([
-                getData("overview"), getData("skills"), getData("roles"),
-                getData("companies"), getData("locations"), getData("experience"),
-                getData("health")
-            ]);
-        document.getElementById("totalJobs").textContent = overview.total_jobs.toLocaleString();
-        document.getElementById("totalRoles").textContent = overview.total_roles.toLocaleString();
-        document.getElementById("totalCompanies").textContent = overview.total_companies.toLocaleString();
-        document.getElementById("totalLocations").textContent = overview.total_locations.toLocaleString();
-        showList("skillsList", skills);
-        showList("rolesList", roles);
-        showList("companiesList", companies);
-        showList("locationsList", locations);
-        document.getElementById("validExperience").textContent = experience.valid_records.toLocaleString();
-        document.getElementById("averageMinimum").textContent =
-            experience.average_minimum === null ? "Not available" : `${experience.average_minimum} years`;
-        document.getElementById("averageMaximum").textContent =
-            experience.average_maximum === null ? "Not available" : `${experience.average_maximum} years`;
-        document.getElementById("apiStatus").textContent =
-            health.status === "ok" ? `API online · ${health.records.toLocaleString()} records loaded` : "API health check failed";
-    } catch (error) {
-        console.error(error);
-        document.getElementById("apiStatus").textContent = "Could not load dashboard data. Check deployment logs.";
-        document.getElementById("searchMessage").textContent =
-            "Some data could not be loaded. Refresh the page or check the application logs.";
-    }
+async function loadOptions() {
+  const options = await api("options");
+  populateSelect("role", options.roles, "All role categories");
+  populateSelect("location", options.locations, "All cities and regions");
+  populateSelect("company", options.companies, "All companies");
 }
 
-function readFilters() {
-    return {
-        role: document.getElementById("role").value.trim(),
-        location: document.getElementById("location").value.trim(),
-        company: document.getElementById("company").value.trim()
-    };
+async function loadDashboard() {
+  const [overview, skills, roles, companies, locations, experience, health] = await Promise.all([
+    api("overview"), api("skills"), api("roles"), api("companies"),
+    api("locations"), api("experience"), api("health")
+  ]);
+  document.getElementById("totalJobs").textContent = formatNumber(overview.total_jobs);
+  document.getElementById("totalRoles").textContent = formatNumber(overview.total_roles);
+  document.getElementById("totalCompanies").textContent = formatNumber(overview.total_companies);
+  document.getElementById("totalLocations").textContent = formatNumber(overview.total_locations);
+  renderRanking("skillsList", skills);
+  renderRanking("rolesList", roles);
+  renderRanking("companiesList", companies);
+  renderRanking("locationsList", locations);
+  document.getElementById("validExperience").textContent = formatNumber(experience.valid_records);
+  document.getElementById("averageMinimum").textContent =
+    experience.average_minimum == null ? "Not available" : `${experience.average_minimum} yrs`;
+  document.getElementById("averageMaximum").textContent =
+    experience.average_maximum == null ? "Not available" : `${experience.average_maximum} yrs`;
+  const status = `API online · ${formatNumber(health.records)} records loaded`;
+  document.getElementById("apiStatus").textContent = "● Online";
+  document.getElementById("apiStatus").classList.add("online");
+  document.getElementById("footerStatus").textContent = status;
+}
+
+function selectedFilters() {
+  return {
+    role: document.getElementById("role").value,
+    location: document.getElementById("location").value,
+    company: document.getElementById("company").value
+  };
+}
+
+function renderJobs(jobs) {
+  const container = document.getElementById("jobsList");
+  container.replaceChildren();
+  if (!jobs.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "No listings match these filters. Try removing one or more filters.";
+    container.append(empty);
+    return;
+  }
+  jobs.forEach(job => {
+    const card = document.createElement("article");
+    card.className = "job-card";
+    const title = document.createElement("h3");
+    title.textContent = job.Clean_Role || "Other / Unclassified";
+    const category = document.createElement("span");
+    category.className = "role-tag";
+    category.textContent = `${formatNumber(job.records_in_group)} source record${job.records_in_group === 1 ? "" : "s"} grouped`;
+    const source = document.createElement("p");
+    source.className = "source-title";
+    const titles = (job.source_titles || []).join(" · ");
+    source.textContent = titles ? `Original listing title${job.source_titles.length > 1 ? "s" : ""}: ${titles}` : "";
+    const meta = document.createElement("p");
+    meta.className = "job-meta";
+    meta.textContent = `${job.Company || "Company not specified"} · ${job.Clean_Location || job.Location || "Location not specified"} · ${job["Job Experience"] || "Experience not specified"} years`;
+    const skills = document.createElement("p");
+    skills.className = "job-skills";
+    skills.textContent = job["Skills/Description"] || "No skills description provided.";
+    card.append(title, category, source, meta, skills);
+    container.append(card);
+  });
 }
 
 async function searchJobs(page = 1) {
-    currentPage = page;
-    const params = new URLSearchParams({
-        page: String(currentPage),
-        per_page: String(PAGE_SIZE)
-    });
-    Object.entries(currentFilters).forEach(([key, value]) => {
-        if (value) params.set(key, value);
-    });
-
-    const list = document.getElementById("jobsList");
-    const message = document.getElementById("searchMessage");
-    list.replaceChildren();
-    message.textContent = "Searching…";
-
-    try {
-        const response = await fetch(`/api/jobs?${params.toString()}`);
-        if (!response.ok) throw new Error(`Search failed (${response.status})`);
-        const result = await response.json();
-        totalPages = result.pages;
-        message.textContent = result.total
-            ? `${result.total.toLocaleString()} matching listings. Showing ${result.jobs.length} on this page.`
-            : "No matching listings found.";
-
-        result.jobs.forEach(job => {
-            const item = document.createElement("li");
-            item.className = "job-card";
-            const heading = document.createElement("h3");
-            heading.textContent = job.Job_Role || "Untitled role";
-            const meta = document.createElement("p");
-            meta.className = "job-meta";
-            meta.textContent = `${job.Company} · ${job.Location} · Experience: ${job["Job Experience"] || "Not specified"}`;
-            const skills = document.createElement("p");
-            skills.textContent = job["Skills/Description"] || "No skills description provided.";
-            item.append(heading, meta, skills);
-            list.appendChild(item);
-        });
-        document.getElementById("pageStatus").textContent =
-            `Page ${result.pages ? result.page : 0} of ${result.pages}`;
-        document.getElementById("previousPage").disabled = result.page <= 1 || !result.pages;
-        document.getElementById("nextPage").disabled = result.page >= result.pages || !result.pages;
-    } catch (error) {
-        console.error(error);
-        message.textContent = "Unable to search listings. Please try again.";
-        document.getElementById("pageStatus").textContent = "Page unavailable";
-        document.getElementById("previousPage").disabled = true;
-        document.getElementById("nextPage").disabled = true;
-    }
+  state.page = page;
+  state.pageSize = Number(document.getElementById("pageSize").value);
+  const params = new URLSearchParams({ page: String(page), per_page: String(state.pageSize), ...state.filters });
+  const message = document.getElementById("searchMessage");
+  const jobs = document.getElementById("jobsList");
+  message.textContent = "Searching listings…";
+  jobs.replaceChildren();
+  try {
+    const result = await api(`jobs?${params.toString()}`);
+    state.pages = result.pages;
+    renderJobs(result.jobs);
+    message.textContent = `${formatNumber(result.total)} distinct job groups · representing ${formatNumber(result.total_records)} source records · showing ${formatNumber(result.jobs.length)} groups`;
+    document.getElementById("pageStatus").textContent = `Page ${result.pages ? result.page : 0} of ${result.pages}`;
+    document.getElementById("previousPage").disabled = result.page <= 1 || !result.pages;
+    document.getElementById("nextPage").disabled = result.page >= result.pages || !result.pages;
+  } catch (error) {
+    console.error(error);
+    message.textContent = "Could not retrieve listings. Please try again.";
+    document.getElementById("pageStatus").textContent = "Page unavailable";
+    document.getElementById("previousPage").disabled = true;
+    document.getElementById("nextPage").disabled = true;
+  }
 }
 
-document.getElementById("searchForm").addEventListener("submit", async event => {
-    event.preventDefault();
-    currentFilters = readFilters();
-    await searchJobs(1);
+document.getElementById("searchForm").addEventListener("submit", event => {
+  event.preventDefault();
+  state.filters = selectedFilters();
+  searchJobs(1);
 });
-
-document.getElementById("resetButton").addEventListener("click", async () => {
-    document.getElementById("searchForm").reset();
-    currentFilters = { role: "", location: "", company: "" };
-    await searchJobs(1);
+document.getElementById("resetButton").addEventListener("click", () => {
+  document.getElementById("searchForm").reset();
+  state.filters = { role: "", location: "", company: "" };
+  searchJobs(1);
 });
-
 document.getElementById("previousPage").addEventListener("click", () => {
-    if (currentPage > 1) searchJobs(currentPage - 1);
+  if (state.page > 1) searchJobs(state.page - 1);
 });
 document.getElementById("nextPage").addEventListener("click", () => {
-    if (currentPage < totalPages) searchJobs(currentPage + 1);
+  if (state.page < state.pages) searchJobs(state.page + 1);
 });
+document.getElementById("pageSize").addEventListener("change", () => searchJobs(1));
 
 (async function init() {
-    try {
-        await loadDropdowns();
-    } catch (error) {
-        console.error("Could not load search options:", error);
-        document.getElementById("searchMessage").textContent = "Search options could not be loaded.";
-    }
-    await loadPage();
+  try {
+    await Promise.all([loadOptions(), loadDashboard()]);
+    await searchJobs(1);
+  } catch (error) {
+    console.error(error);
+    document.getElementById("apiStatus").textContent = "● Data unavailable";
+    document.getElementById("footerStatus").textContent = "Could not load dashboard data. Check server logs.";
+    document.getElementById("searchMessage").textContent = "Dashboard data could not be loaded. Refresh or check deployment logs.";
+  }
 })();
