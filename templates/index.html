@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Market Skills Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Job Market Skills and Salary Analysis</h1>
+        <p>Career and Labour Market Analytics</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>About the Project</h2>
+            <p>
+                This project analyses job listings to understand the skills,
+                job roles, companies, locations and experience requirements
+                mentioned in job advertisements.
+            </p>
+        </section>
+
+        <section>
+            <h2>Dataset Overview</h2>
+            <p>Total job listings: <span id="totalJobs">Loading...</span></p>
+            <p>Unique job roles: <span id="totalRoles">Loading...</span></p>
+            <p>Companies: <span id="totalCompanies">Loading...</span></p>
+            <p>Locations: <span id="totalLocations">Loading...</span></p>
+        </section>
+
+        <section>
+            <h2>Most Common Skills</h2>
+            <ul id="skillsList">
+                <li>Loading skills...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Popular Job Roles</h2>
+            <ul id="rolesList">
+                <li>Loading job roles...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Top Companies</h2>
+            <ul id="companiesList">
+                <li>Loading companies...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Popular Locations</h2>
+            <ul id="locationsList">
+                <li>Loading locations...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Experience Analysis</h2>
+            <p>Valid experience ranges: <span id="validExperience">Loading...</span></p>
+            <p>Average minimum experience: <span id="averageMinimum">Loading...</span></p>
+            <p>Average maximum experience: <span id="averageMaximum">Loading...</span></p>
+        </section>
+
+        <section>
+            <h2>Search Job Listings</h2>
+
+            <form id="searchForm">
+                <label for="role">Job Role:</label>
+                <select id="role">
+                    <option value="">All Job Roles</option>
+                </select>
+
+                <label for="location">Location:</label>
+                <select id="location">
+                    <option value="">All Locations</option>
+                </select>
+
+                <label for="company">Company:</label>
+                <select id="company">
+                    <option value="">All Companies</option>
+                </select>
+
+                <button type="submit">Search Jobs</button>
+                <button type="button" id="resetButton">Reset</button>
+            </form>
+
+        <div id="searchResults"></div>
+
+            <p id="searchMessage"></p>
+            <ul id="jobsList"></ul>
+        </section>
+
+        <section>
+            <h2>Salary Analysis</h2>
+            <p>
+                Salary information is not available in the current dataset.
+                A separate dataset containing salary values would be needed
+                to perform salary analysis.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Job Market Skills and Salary Analysis | Python, Pandas and Flask</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
