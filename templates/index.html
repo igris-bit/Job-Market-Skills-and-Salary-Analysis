@@ -1,115 +1,94 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Market Skills Analysis</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore skills, standardized job roles, companies and cities in an India-focused job listing dataset.">
+  <title>Job Market Skills & Salary Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">CAREER &amp; LABOUR MARKET ANALYTICS</p>
+      <h1>Job Market Skills <span>&amp;</span> Salary Analysis</h1>
+      <p>Turn job listings into clearer career signals.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px;">
+        <a class="hero-link" href="#explore" style="margin-top:0;">Explore the dataset <span aria-hidden="true">↓</span></a>
+        <a class="hero-link" href="https://job-market-skills-and-salary-analysis.onrender.com/" target="_blank" rel="noopener noreferrer" style="margin-top:0;background:rgba(16,185,129,0.22);border-color:#10b981;color:#a7f3d0;">
+          🚀 Live Deployed: job-market-skills-and-salary-analysis.onrender.com
+        </a>
+      </div>
+    </div>
+  </header>
 
-    <header>
-        <h1>Job Market Skills and Salary Analysis</h1>
-        <p>Career and Labour Market Analytics</p>
-    </header>
+  <main>
+    <section class="intro-panel">
+      <div>
+        <p class="section-kicker">ABOUT THE PROJECT</p>
+        <h2>Understand what employers are asking for.</h2>
+        <p>This dashboard explores skills, role families, companies, locations and experience requirements in the supplied job-listing dataset. Metrics describe this dataset, not the entire Indian job market.</p>
+      </div>
+      <aside class="data-note"><strong>Data note</strong><br>Salary values are not present in the supplied CSV. This dashboard does not estimate or invent salary figures.</aside>
+    </section>
 
-    <main>
-        <section>
-            <h2>About the Project</h2>
-            <p>
-                This project analyses job listings to understand the skills,
-                job roles, companies, locations and experience requirements
-                mentioned in job advertisements.
-            </p>
-        </section>
+    <section id="overview">
+      <div class="section-heading"><div><p class="section-kicker">THE DATASET</p><h2>At a glance</h2></div><span id="apiStatus" class="status-pill">Connecting…</span></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span>Total listings</span><strong id="totalJobs">—</strong><small>Clean source records</small></article>
+        <article class="stat-card"><span>Role categories</span><strong id="totalRoles">—</strong><small>Standardized role families</small></article>
+        <article class="stat-card"><span>Companies</span><strong id="totalCompanies">—</strong><small>Distinct company names</small></article>
+        <article class="stat-card"><span>Unique cities</span><strong id="totalLocations">—</strong><small>After city normalization</small></article>
+      </div>
+    </section>
 
-        <section>
-            <h2>Dataset Overview</h2>
-            <p>Total job listings: <span id="totalJobs">Loading...</span></p>
-            <p>Unique job roles: <span id="totalRoles">Loading...</span></p>
-            <p>Companies: <span id="totalCompanies">Loading...</span></p>
-            <p>Locations: <span id="totalLocations">Loading...</span></p>
-        </section>
+    <section>
+      <div class="section-heading"><div><p class="section-kicker">MARKET SIGNALS</p><h2>What appears most often</h2></div><span class="section-note">Ranked by frequency · highest first</span></div>
+      <div class="insights-grid">
+        <article class="insight-card"><h3>Most common skills</h3><ol id="skillsList" class="ranked-list"><li>Loading…</li></ol></article>
+        <article class="insight-card"><h3>Popular job roles</h3><ol id="rolesList" class="ranked-list"><li>Loading…</li></ol></article>
+        <article class="insight-card"><h3>Top companies</h3><ol id="companiesList" class="ranked-list"><li>Loading…</li></ol></article>
+        <article class="insight-card"><h3>Popular cities</h3><ol id="locationsList" class="ranked-list"><li>Loading…</li></ol></article>
+      </div>
+    </section>
 
-        <section>
-            <h2>Most Common Skills</h2>
-            <ul id="skillsList">
-                <li>Loading skills...</li>
-            </ul>
-        </section>
+    <section>
+      <div class="section-heading"><div><p class="section-kicker">EXPERIENCE</p><h2>Experience requirements</h2></div></div>
+      <div class="experience-grid">
+        <article><span>Valid experience ranges</span><strong id="validExperience">—</strong></article>
+        <article><span>Average minimum</span><strong id="averageMinimum">—</strong></article>
+        <article><span>Average maximum</span><strong id="averageMaximum">—</strong></article>
+      </div>
+      <p class="muted">Averages use records formatted as a valid minimum-to-maximum year range.</p>
+    </section>
 
-        <section>
-            <h2>Popular Job Roles</h2>
-            <ul id="rolesList">
-                <li>Loading job roles...</li>
-            </ul>
-        </section>
+    <section id="explore">
+      <div class="section-heading"><div><p class="section-kicker">EXPLORE LISTINGS</p><h2>Find jobs in the dataset</h2><p class="muted">Choose from cleaned role categories, city names, and company names. Similar location aliases are combined to reduce repetition.</p></div></div>
+      <form id="searchForm" class="filter-grid">
+        <div class="field"><label for="role">Job role</label><select id="role"><option value="">All role categories</option></select></div>
+        <div class="field"><label for="location">City or region</label><select id="location"><option value="">All cities and regions</option></select></div>
+        <div class="field"><label for="company">Company</label><select id="company"><option value="">All companies</option></select></div>
+        <div class="form-actions"><button type="submit" id="searchButton">Search listings</button><button type="button" id="resetButton" class="button-secondary">Reset</button></div>
+      </form>
+      <div class="results-toolbar"><p id="searchMessage" role="status" aria-live="polite">Choose filters to explore the listings.</p><label class="page-size">Rows <select id="pageSize"><option>25</option><option>50</option><option>100</option></select></label></div>
+      <div id="jobsList" class="job-results"></div>
+      <div class="pagination"><button type="button" id="previousPage" class="button-secondary" disabled>Previous</button><span id="pageStatus">Page 0 of 0</span><button type="button" id="nextPage" class="button-secondary" disabled>Next</button></div>
+    </section>
 
-        <section>
-            <h2>Top Companies</h2>
-            <ul id="companiesList">
-                <li>Loading companies...</li>
-            </ul>
-        </section>
+    <section class="salary-panel">
+      <div><p class="section-kicker">SALARY ANALYSIS</p><h2>Salary data not available</h2><p>The supplied CSV does not include salary values. Add a verified salary field or documented dataset before drawing salary conclusions.</p></div>
+      <span class="salary-icon" aria-hidden="true">₹</span>
+    </section>
+  </main>
 
-        <section>
-            <h2>Popular Locations</h2>
-            <ul id="locationsList">
-                <li>Loading locations...</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Experience Analysis</h2>
-            <p>Valid experience ranges: <span id="validExperience">Loading...</span></p>
-            <p>Average minimum experience: <span id="averageMinimum">Loading...</span></p>
-            <p>Average maximum experience: <span id="averageMaximum">Loading...</span></p>
-        </section>
-
-        <section>
-            <h2>Search Job Listings</h2>
-
-            <form id="searchForm">
-                <label for="role">Job Role:</label>
-                <select id="role">
-                    <option value="">All Job Roles</option>
-                </select>
-
-                <label for="location">Location:</label>
-                <select id="location">
-                    <option value="">All Locations</option>
-                </select>
-
-                <label for="company">Company:</label>
-                <select id="company">
-                    <option value="">All Companies</option>
-                </select>
-
-                <button type="submit">Search Jobs</button>
-                <button type="button" id="resetButton">Reset</button>
-            </form>
-
-        <div id="searchResults"></div>
-
-            <p id="searchMessage"></p>
-            <ul id="jobsList"></ul>
-        </section>
-
-        <section>
-            <h2>Salary Analysis</h2>
-            <p>
-                Salary information is not available in the current dataset.
-                A separate dataset containing salary values would be needed
-                to perform salary analysis.
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        <p>Job Market Skills and Salary Analysis | Python, Pandas and Flask</p>
-    </footer>
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <footer>
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <strong>Job Market Skills &amp; Salary Analysis</strong>
+      <span style="font-size:0.78rem;color:#94a9cf;">B.Tech CSE 2nd Year (DA-021) · CSED · Mentor: Mr. Unwan Sir · Team Leader: Harshita Upadhyay</span>
+    </div>
+    <span>Built with Python · Pandas · Flask · Deployed on Render</span>
+    <span id="footerStatus">Dataset status is loading.</span>
+  </footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </body>
 </html>
