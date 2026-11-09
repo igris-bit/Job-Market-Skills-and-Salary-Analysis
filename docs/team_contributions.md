@@ -17,18 +17,18 @@ The project repository utilizes individual git feature branches for each student
 
 | S.No. | Student Name | Student ID | GitHub Branch | Primary Functional Role & Contribution |
 |:---:|:---|:---:|:---:|:---|
-| **1** | **Harshita Upadhyay** | **BCS2025411** | `Harshita` *(TL)* | **Team Leader & Project Architect**: Overall project coordination, Git merge governance, architecture design, and final integration. |
-| **2** | **Lokesh Shukla** | **BCS2025401** | `Lokesh` | **Backend Core & Flask Engineering**: API route design, exception handling, and local server debugging. |
-| **3** | **Sudhanshu Singh** | **BCS2025402** | `Sudhanshu` | **USP Research & Strategic Documentation**: Formulated project USP (*Data-Driven Career Intelligence*), USP documentation, and analysis reports. |
-| **4** | **Rishabh Gupta** | **BCS2025406** | `Rishabh` | **Dataset Engineering & Schema Documentation**: Dataset description, schema definition, and column-level verification. |
-| **5** | **Anurag Verma** | **BCS2025409** | `Anurag` | **Data Preprocessing & Text Cleaning**: Whitespace sanitization, regex patterns, and string parsing. |
-| **6** | **Zainul Ali** | **BCS2025413** | `Zainul` | **Frontend UI & Styling**: CSS Grid/Flexbox layouts, card designs, color palettes, and hero banner aesthetics. |
-| **7** | **Ayushi** | **BCS2025414** | `Ayushi` | **Frontend Logic & DOM Integration**: JavaScript DOM manipulation, list rendering, and empty-state handlers. |
-| **8** | **Nilansh Gupta** | **BCS2025416** | `Nilansh` | **Deployment & Performance Engineering**: Cloud deployment on Render, Gunicorn WSGI configuration, LRU caching, and data quality audit. |
-| **9** | **Pranay Kesarwani** | **BCS2025417** | `Pranay` | **Directory Architecture & Governance**: Documentation of directory structure, module boundaries, and repo hygiene. |
-| **10** | **Mohammad Muneer** | **BCS2025418** | `Muneer` | **Experience & Statistical Analysis**: Numerical experience range extraction and min/max average computations. |
-| **11** | **Kavyansh Bhadri** | **BCS2025419** | `Kavyansh` | **Entity Extraction & City Mapping**: Location parsing, comma splitting, and city frequency calculations. |
-| **12** | **Abhay** | **BCS2025421** | `Abhay` | **Fullstack Feature Integration**: Dynamic search filter connectivity between frontend form and backend API. |
-| **13** | **Sarvesh Singh** | **BCS2025422** | `Sarvesh` | **Technical Terminology & Quality Assurance**: Glossary preparation, edge-case testing, and code quality audits. |
-| **14** | **Sachin** | **BCS2025424** | `Sachin` | **Salary Analysis & Ethical Boundaries**: Salary field validation, missing-value disclosure reporting, and ethics review. |
+| **1** | **Harshita Upadhyay** | **BCS2025411** | `Harshita` *(TL)* | **Team Leadership & System Architecture**: Project Planning, Overall Coordination, Architecture & Governance. |
+| **2** | **Lokesh Shukla** | **BCS2025401** | `Lokesh` | **Backend Core Development**: Flask API Routing, Backend Configuration and Git Ignore Management. |
+| **3** | **Sudhanshu Singh** | **BCS2025402** | `Sudhanshu` | **USP Formulation & Research**: Project Research, MIT License Documentation and Project Uniqueness. |
+| **4** | **Rishabh Gupta** | **BCS2025406** | `Rishabh` | **Dataset Engineering**: CSV Data Analysis, Dataset Structure and Schema Documentation. |
+| **5** | **Anurag Verma** | **BCS2025409** | `Anurag` | **Regex-Based Preprocessing**: Text Cleaning, Data Preparation and Project Execution Instructions. |
+| **6** | **Zainul Ali** | **BCS2025413** | `Zainul` *(TL)* | **Team Leadership & Frontend UI Development**: CSS Styling, Grid and Flexbox Layout Design, Team Coordination. |
+| **7** | **Ayushi** | **BCS2025414** | `Ayushi` | **Frontend DOM Manipulation**: Data Binding, UI State Management and Technology Documentation. |
+| **8** | **Nilansh Gupta** | **BCS2025416** | `Nilansh` | **Application Deployment**: Render Hosting Configuration, Gunicorn Setup and Cache Management. |
+| **9** | **Pranay Kesarwani** | **BCS2025417** | `Pranay` | **Project Folder Structure**: File Organization, Repository Structure and Project Documentation. |
+| **10** | **Mohammad Muneer** | **BCS2025418** | `Muneer` | **Experience Analytics**: Average Experience Calculation, Analytical Improvements and Future Enhancement Suggestions. |
+| **11** | **Kavyansh Bhadri** | **BCS2025419** | `Kavyansh` | **City Name Normalization**: Location Tokenization, Dataset Limitations and Data Standardization. |
+| **12** | **Abhay** | **BCS2025421** | `Abhay` | **Full-Stack Integration**: Search Functionality, Filter Implementation and Frontend-Backend Connectivity. |
+| **13** | **Sarvesh Singh** | **BCS2025422** | `Sarvesh` | **Quality Assurance & Testing**: Technical Documentation, Testing and Basic Technical Terminology. |
+| **14** | **Sachin** | **BCS2025424** | `Sachin` | **Salary Ethics Audit**: Salary Data Boundary Verification, Data Accuracy and Responsible Data Interpretation. |
 

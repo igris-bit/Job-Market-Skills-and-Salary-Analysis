@@ -11,30 +11,35 @@
 **Program Name:** Career & Labour Market Analytics (IIOT / PBL Project)  
 **Project Title:** Job Market Skills and Salary Analysis  
 **Faculty Mentor:** Mr. Unwan Sir  
+**Team Leaders:** Harshita Upadhyay (`BCS2025411`) & Zainul Ali (`BCS2025413`)  
 
 **Live Deployed Application URL:**  
-👉 **[https://job-market-skills-and-salary-analysis.onrender.com/](https://job-market-skills-and-salary-analysis.onrender.com/)**
+👉 **[https://job-market-skills-and-salary-analysis.onrender.com/](https://job-market-skills-and-salary-analysis.onrender.com/)**  
+
+**GitHub Source Code Repository:**  
+👉 **[https://github.com/upadhyayharshita07-cmd/Job-Market-Skills-and-Salary-Analysis](https://github.com/upadhyayharshita07-cmd/Job-Market-Skills-and-Salary-Analysis)**  
+*(14 Dedicated Feature Branches · Protected Main Branch · Render CI/CD Webhook · In-Memory LRU Caching)*
 
 ---
 
 ### **TEAM MEMBERS & STUDENT IDENTIFIERS**
 
-| S.No. | Student Name | Student ID | GitHub Branch | Project Role / Primary Responsibility |
+| S.No. | Student Name | Student ID | GitHub Branch | Project Role / Functional Responsibilities |
 |:---:|:---|:---:|:---:|:---|
-| **1** | **Harshita Upadhyay** | **BCS2025411** | `Harshita` *(TL)* | **Team Leader & System Architect**: Project coordination, Git governance, integration, and architecture. |
-| **2** | **Lokesh Shukla** | **BCS2025401** | `Lokesh` | **Backend Core Developer**: Flask routing, exception handlers, and local execution. |
-| **3** | **Sudhanshu Singh** | **BCS2025402** | `Sudhanshu` | **USP Research Lead**: Formulation of *Data-Driven Career Intelligence* and value proposition. |
-| **4** | **Rishabh Gupta** | **BCS2025406** | `Rishabh` | **Dataset Engineering Lead**: Schema specifications, column mapping, and dataset verification. |
-| **5** | **Anurag Verma** | **BCS2025409** | `Anurag` | **Data Preprocessing Specialist**: Regex pattern design, text sanitation, and token cleaning. |
-| **6** | **Zainul Ali** | **BCS2025413** | `Zainul` | **Frontend UI & Styling Lead**: CSS Grid/Flexbox design, typography, and responsive hero sections. |
-| **7** | **Ayushi** | **BCS2025414** | `Ayushi` | **Frontend Integration Specialist**: DOM manipulation, dynamic rankings rendering, and UI states. |
-| **8** | **Nilansh Gupta** | **BCS2025416** | `Nilansh` | **Deployment & Performance Engineer**: Cloud deployment on Render, Gunicorn WSGI, LRU cache, and audit. |
-| **9** | **Pranay Kesarwani** | **BCS2025417** | `Pranay` | **Directory Architecture Lead**: Folder structure design, module boundaries, and repo organization. |
-| **10** | **Mohammad Muneer** | **BCS2025418** | `Muneer` | **Experience & Statistical Analytics**: Experience range parsing and statistical distribution modeling. |
-| **11** | **Kavyansh Bhadri** | **BCS2025419** | `Kavyansh` | **Entity Extraction & City Normalization**: Multi-city tokenization, alias mapping, and city rankings. |
-| **12** | **Abhay** | **BCS2025421** | `Abhay` | **Fullstack Feature Integration**: Dynamic filter synchronization between UI form and API query params. |
-| **13** | **Sarvesh Singh** | **BCS2025422** | `Sarvesh` | **QA & Technical Governance**: Edge-case testing, data audits, and glossary documentation. |
-| **14** | **Sachin** | **BCS2025424** | `Sachin` | **Salary Analysis & Ethical Boundaries**: Salary coverage audit, missing-value disclosure reporting, and ethics review. |
+| **1** | **Harshita Upadhyay** | **BCS2025411** | `Harshita` *(TL)* | **Team Leadership & System Architecture**: Project Planning, Overall Coordination, Architecture & Governance. |
+| **2** | **Lokesh Shukla** | **BCS2025401** | `Lokesh` | **Backend Core Development**: Flask API Routing, Backend Configuration and Git Ignore Management. |
+| **3** | **Sudhanshu Singh** | **BCS2025402** | `Sudhanshu` | **USP Formulation & Research**: Project Research, MIT License Documentation and Project Uniqueness. |
+| **4** | **Rishabh Gupta** | **BCS2025406** | `Rishabh` | **Dataset Engineering**: CSV Data Analysis, Dataset Structure and Schema Documentation. |
+| **5** | **Anurag Verma** | **BCS2025409** | `Anurag` | **Regex-Based Preprocessing**: Text Cleaning, Data Preparation and Project Execution Instructions. |
+| **6** | **Zainul Ali** | **BCS2025413** | `Zainul` *(TL)* | **Team Leadership & Frontend UI Development**: CSS Styling, Grid and Flexbox Layout Design, Team Coordination. |
+| **7** | **Ayushi** | **BCS2025414** | `Ayushi` | **Frontend DOM Manipulation**: Data Binding, UI State Management and Technology Documentation. |
+| **8** | **Nilansh Gupta** | **BCS2025416** | `Nilansh` | **Application Deployment**: Render Hosting Configuration, Gunicorn Setup and Cache Management. |
+| **9** | **Pranay Kesarwani** | **BCS2025417** | `Pranay` | **Project Folder Structure**: File Organization, Repository Structure and Project Documentation. |
+| **10** | **Mohammad Muneer** | **BCS2025418** | `Muneer` | **Experience Analytics**: Average Experience Calculation, Analytical Improvements and Future Enhancement Suggestions. |
+| **11** | **Kavyansh Bhadri** | **BCS2025419** | `Kavyansh` | **City Name Normalization**: Location Tokenization, Dataset Limitations and Data Standardization. |
+| **12** | **Abhay** | **BCS2025421** | `Abhay` | **Full-Stack Integration**: Search Functionality, Filter Implementation and Frontend-Backend Connectivity. |
+| **13** | **Sarvesh Singh** | **BCS2025422** | `Sarvesh` | **Quality Assurance & Testing**: Technical Documentation, Testing and Basic Technical Terminology. |
+| **14** | **Sachin** | **BCS2025424** | `Sachin` | **Salary Ethics Audit**: Salary Data Boundary Verification, Data Accuracy and Responsible Data Interpretation. |
 
 ---
 
@@ -43,21 +48,29 @@
 1. **Introduction**
 2. **Problem Statement**
 3. **Objectives of the Project**
+   - 3.1 Seven Core Unique Selling Propositions (USPs)
+   - 3.2 System Capability Matrix (Implemented vs. Proposed Scope)
 4. **Literature Review**
 5. **System Architecture & Methodology**
    - 5.1 Research Design
    - 5.2 Data Source and Provenance
-   - 5.3 Schema Specification
+   - 5.3 Schema Specification & Provenance Metrics (Data Audit)
    - 5.4 Data Preprocessing Pipeline
    - 5.5 Entity & Taxonomy Normalization
 6. **Project Working & Workflow**
 7. **Implementation & Code Design**
+   - 7.1 LRU Cached Data Loader
+   - 7.2 Deterministic Skill Extraction
+   - 7.3 Numerical Experience Parsing
+   - 7.4 REST API Specifications (GitHub API Documentation)
+   - 7.5 GitHub Branching Model & Version Control Governance
+   - 7.6 Quality Assurance & Testing Protocol (Manual Test Matrix)
 8. **Results & Empirical Discussions**
    - 8.1 Skill Frequency Distribution
-   - 8.2 Job Role Taxonomy Findings
-   - 8.3 Geographical Concentration
+   - 8.2 Job Role Taxonomy Findings (GitHub Data Audit)
+   - 8.3 Geographical Concentration (Top Normalized Cities Audit)
    - 8.4 Experience Requirements
-   - 8.5 Salary Transparency Analysis
+   - 8.5 Salary Transparency Analysis & Ethical Standards
    - 8.6 Limitations
 9. **User Interface & Deployed System**
 10. **Future Scope & Enhancements**
@@ -105,6 +118,54 @@ The primary objectives of this B.Tech IIOT / PBL project are:
 5. **Statistical Experience Analysis**: Extract minimum and maximum years of experience using regular expressions and calculate verifiable mathematical averages.
 6. **Salary Transparency & Data Ethics**: Provide explicit disclosure of salary availability rather than synthesizing unverified numbers.
 7. **Production Cloud Deployment**: Package the analytical engine as a lightweight Flask microservice backed by Gunicorn and deploy on Render with continuous integration.
+
+### 3.1 Seven Core Unique Selling Propositions (USPs)
+Our project delivers **Data-Driven Career Intelligence** anchored by seven key technical differentiators:
+
+1. **Empirical Skill Demand Analysis**:
+   - Calculates the exact frequency and percentage share of unique job postings requiring each standardized skill across 12,000 listings.
+   - Highlights the highest-demand competencies (Python, SQL, ML, AWS) based on statistical evidence rather than anecdotal trends.
+
+2. **Role-Specific Skill Profiling**:
+   - Compares skill sets required across 18 standardized job role families (e.g., contrasting *Data Engineer* vs. *Data Analyst* vs. *Machine Learning Engineer*).
+   - Allows students to tailor their personal learning roadmaps to exact career targets.
+
+3. **Deterministic Skill Normalization**:
+   - Resolves abbreviations and informal variants (`py` → `Python`, `js` → `JavaScript`, `power-bi` → `Power BI`) through a documented canonical dictionary.
+   - Prunes generic keywords (`skills`, `it skills`) while preserving original context.
+
+4. **Salary Transparency & Anti-Hallucination Policy**:
+   - Transparently audits and reports that source compensation fields are omitted in Indian job board postings.
+   - Strictly avoids training speculative machine learning models to invent synthetic salary figures, preserving academic and data integrity.
+
+5. **Geographical Job Distribution & Multi-City Tokenization**:
+   - Parses multi-city postings, standardizes metropolitan aliases (`Bangalore/Bengaluru` → `Bengaluru`), and aggregates regional clusters (`Delhi NCR`).
+   - Maps regional opportunity concentrations across India's premier tech hubs.
+
+6. **Experience-Requirement Profiling**:
+   - Employs regex parsers to extract numerical minimum and maximum required experience bands.
+   - Models average entry thresholds across role families to distinguish entry-level from mid-senior opportunities.
+
+7. **Reproducible Analytical Pipeline & Cloud Delivery**:
+   - End-to-end reproducible workflow from raw CSV ingestion to Gunicorn WSGI and interactive cloud dashboard.
+   - High-performance caching (`@lru_cache`) guarantees sub-15ms query execution times.
+
+### 3.2 System Capability Matrix (Implemented vs. Proposed Scope)
+
+| Capability / Feature Area | Status in Project | Implementation Details |
+| :--- | :---: | :--- |
+| **CSV Data Ingestion & Sanitization** | **Fully Implemented** | Unicode NFKC normalization, whitespace trimming, row deduplication |
+| **Deterministic Skill Standardization** | **Fully Implemented** | Documented canonical dictionary and noise filter |
+| **Skill Frequency & Ranking Engine** | **Fully Implemented** | Top 15 ranked skills via `/api/skills` |
+| **18-Tier Role Taxonomy** | **Fully Implemented** | Heuristic regex classification via `/api/roles` |
+| **Location Tokenization & City Rankings** | **Fully Implemented** | Comma-delimited unrolling and alias grouping via `/api/locations` |
+| **Experience Extraction & Averages** | **Fully Implemented** | Regex range parsing with average min/max via `/api/experience` |
+| **Interactive Search & Pagination** | **Fully Implemented** | Dynamic faceted filtering on role, city, and company via `/api/jobs` |
+| **Salary Missingness & Transparency** | **Fully Implemented** | Dedicated disclosure endpoint via `/api/salary` and UI banner |
+| **In-Memory LRU Caching** | **Fully Implemented** | Sub-15ms cached response latency using Python `functools.lru_cache` |
+| **Production Cloud Hosting** | **Live Deployed** | Render Cloud Platform with Gunicorn WSGI server and auto CI/CD |
+| **Personalized Skill-Gap Analyzer** | *Proposed Future Scope* | User profile comparison against observed postings |
+| **Transformer-Based NLP Extraction** | *Proposed Future Scope* | Named Entity Recognition on unstructured job descriptions |
 
 ---
 
@@ -166,25 +227,35 @@ Our project builds directly upon these principles by combining deterministic rul
 The project implements an empirical, quantitative, descriptive cross-sectional analysis of authentic Indian IT and Data Science job vacancies.
 
 ### 5.2 Data Source & Provenance
-The dataset comprises 12,000 job listings gathered from Naukri.com (`naukri_data_science_jobs_india.csv`).
+The dataset comprises **12,000 job listings** gathered from Naukri.com (`naukri_data_science_jobs_india.csv`).
 
-### 5.3 Schema Specification
+### 5.3 Schema Specification & Provenance Metrics
 The dataset contains five core attributes:
-- `Job_Role`: Job title advertised by the employer.
-- `Company`: Employer or hiring agency name.
-- `Location`: Workplace location string, often comma-delimited.
-- `Job Experience`: Required work experience string (e.g., "3-8 Yrs").
-- `Skills/Description`: Comma-separated list of required technical competencies.
+- `Job_Role`: Job title advertised by the employer (String).
+- `Company`: Employer or hiring agency name (String).
+- `Location`: Workplace location string, often comma-delimited (String).
+- `Job Experience`: Required work experience string, e.g., "3-8 Yrs" (String).
+- `Skills/Description`: Comma-separated list of required technical competencies (String).
+
+#### Empirical Data Hygiene Audit (Source Facts from GitHub Audit)
+- **Total Source Rows:** 12,000
+- **Exact Duplicate Rows Across All 5 Columns:** 0 (Zero data loss, 100% integrity)
+- **Distinct Raw Job-Title Strings:** 6,563
+- **Distinct Raw Location Strings:** 822
+- **Distinct Company Strings:** 3,507 unique organizations
+- **Repeated (Role, Company, Location, Experience) Combinations:** 598 combinations (treated as review candidates, preserved rather than deleted)
+- **Distinct Normalized City Tokens:** 292 unique cities (after multi-city comma unrolling and canonical alias resolution)
+- **Search-Result Grouping Aggregation:** 10,349 distinct result groups representing 12,000 source records
 
 ### 5.4 Preprocessing Pipeline
 1. **Unicode Sanitization**: Converts all non-standard spaces and characters to standard Unicode NFKC.
 2. **Missing Value Imputation**: Null and non-string entries are converted to empty strings; records missing critical keys are safely excluded.
-3. **Deduplication**: Identical row duplicates across all 5 dimensions are purged.
+3. **Deduplication**: Identical row duplicates across all 5 dimensions are verified and confirmed at 0 rows.
 
 ### 5.5 Entity & Taxonomy Normalization
-- **Skills Normalization**: Maps informal variants (`py` → `Python`, `power-bi` → `Power BI`, `sql` → `SQL`) and strips noisy generic strings (`skills`, `it skills`).
-- **City Normalization**: Resolves metropolitan aliases (`Bangalore/Bengaluru` → `Bengaluru`, `Gurgaon` → `Gurugram`, `Calcutta` → `Kolkata`). Creates a regional super-set for `Delhi NCR (All cities)`.
-- **Role Taxonomy**: Applies compiled regular expressions to classify titles into 18 established industry families while preserving original titles for search results.
+- **Skills Normalization**: Maps informal variants (`py` → `Python`, `power-bi` → `Power BI`, `sql` → `SQL`, `js` → `JavaScript`) and strips noisy generic strings (`skills`, `it skills`).
+- **City Normalization**: Resolves metropolitan aliases (`Bangalore/Bengaluru` → `Bengaluru`, `Gurgaon` → `Gurugram`, `Calcutta` → `Kolkata`, `Bombay` → `Mumbai`). Creates a regional super-set for `Delhi NCR (All cities)`.
+- **Role Taxonomy**: Applies compiled regular expressions to classify titles into 18 established industry families (`Data Engineer`, `Data Scientist`, `Data Analyst`, `Machine Learning Engineer`, etc.) while preserving original titles for search results.
 
 ---
 
@@ -259,6 +330,41 @@ def extract_experience(df):
 
 ---
 
+### 7.4 REST API Specifications (from GitHub API Documentation)
+
+The application exposes 10 production-ready REST endpoints:
+
+| Endpoint | Method | Parameters | Functionality |
+|:---|:---:|:---|:---|
+| `/api/health` | `GET` | None | Returns server health, dataset loading status, and total row count. |
+| `/api/overview` | `GET` | None | Key analytical KPIs (Total Listings, Roles, Companies, Cities). |
+| `/api/skills` | `GET` | None | Ranked Top 15 technical skills with occurrence frequencies. |
+| `/api/roles` | `GET` | None | Distribution counts across standardized role families. |
+| `/api/companies` | `GET` | None | Top 10 employers with the highest posting frequency. |
+| `/api/locations` | `GET` | None | Top normalized employment hubs (unrolled multi-city entries). |
+| `/api/experience` | `GET` | None | Average minimum and maximum required years of experience. |
+| `/api/options` | `GET` | None | Distinct dropdown options for roles, locations, and companies. |
+| `/api/jobs` | `GET` | `role`, `location`, `company`, `page`, `page_size` | Filtered, grouped, and paginated job cards (default: 25 items/page). |
+| `/api/salary` | `GET` | None | Transparent missing-value disclosure regarding unadvertised salaries. |
+
+### 7.5 GitHub Branching Model & Version Control Governance
+
+To emulate enterprise software engineering standards, the 14-member student team operated using a **Feature-Branch Git Architecture**:
+- **Protected `main` Branch**: Production branch configured for continuous deployment on Render Cloud.
+- **`Harshita` & `Zainul` (Team Leader Branches)**: Master integration and UI governance branches where code reviews, pull requests, and merge conflict resolutions were managed.
+- **14 Dedicated Feature Branches**: Each contributor developed in an isolated branch (`Harshita`, `Lokesh`, `Sudhanshu`, `Rishabh`, `Anurag`, `Zainul`, `Ayushi`, `Nilansh`, `Pranay`, `Muneer`, `Kavyansh`, `Abhay`, `Sarvesh`, `Sachin`).
+- **Continuous Integration / Continuous Deployment (CI/CD)**: Every merged commit to `main` automatically triggers Render’s build hook (`pip install -r requirements.txt` and `gunicorn app:app`).
+
+### 7.6 Quality Assurance & Testing Protocol (GitHub Manual Test Matrix)
+
+As documented in the repository's test matrix (`Docs/manual_test_checklist.md`), rigorous end-to-end verification was conducted:
+1. **Page Load & Asset Verification**: Verifies HTML5 validity, Google Fonts rendering, and static CSS/JS load times.
+2. **API Health & State Handlers**: Confirms status pill changes to `● Online` upon successful `/api/health` response.
+3. **Dynamic Filtering & Reset**: Validates multi-select combinations across Role, City, and Company, ensuring that the Reset button returns the DOM to default state.
+4. **Pagination & Boundary Tests**: Verifies `Previous`/`Next` page constraints and empty state handlers when search queries yield zero records.
+
+---
+
 ## 8. RESULTS & EMPIRICAL DISCUSSIONS
 
 ### 8.1 Skill Frequency Distribution
@@ -269,23 +375,48 @@ Analysis of the 12,000 records reveals a dominant cluster of core analytical tec
 4. **Cloud Platforms (AWS, Azure, GCP)**: High demand in Data Engineering positions.
 5. **Business Intelligence (Excel, Power BI, Tableau)**: Leading tools for business and data analytics.
 
-### 8.2 Job Role Taxonomy Findings
-- **Data Engineer**: Represents the single largest proportion of listings (~27%), reflecting strong enterprise demand for big data infrastructure.
-- **Data Scientist**: High volume (~11%), requiring combined skills in statistics, Python, and domain modeling.
-- **Data Analyst & Business Analyst**: Together account for ~15% of total postings.
+### 8.2 Job Role Taxonomy Findings (GitHub Data Audit)
 
-### 8.3 Geographical Concentration
-- **Bengaluru** is the undisputed tech capital, accounting for over **5,000 mentions** (~42% of all localized postings).
-- **Pune** (~2,000) and **Hyderabad** (~1,940) form the second tier of employment opportunities.
-- **Mumbai**, **Chennai**, and **Delhi NCR** represent substantial secondary hubs.
+The deterministic title taxonomy maps 6,563 raw title strings into 18 standardized role families. Current empirical record distribution from our data audit:
+
+| Role Family | Total Records | Percentage Share | Core Focus & Typical Requirements |
+|:---|---:|---:|:---|
+| **Data Engineer** | **3,271** | **27.26%** | ETL pipelines, SQL, Python, Big Data infrastructure (Spark, Hadoop, AWS) |
+| **Other / Unclassified** | 1,929 | 16.08% | Specialized / hybrid titles preserved with original context |
+| **Other Analyst** | 1,822 | 15.18% | Financial, risk, operational, and domain-specific analysts |
+| **Data Scientist** | **1,332** | **11.10%** | Machine Learning, statistics, Python, feature engineering, predictive models |
+| **Data Analyst** | **1,099** | **9.16%** | SQL, Power BI, Excel, Tableau, business dashboarding |
+| **Business Analyst** | **645** | **5.38%** | Stakeholder requirements, agile workflows, process analytics |
+| **Machine Learning Engineer** | ~450 | ~3.75% | Model deployment, Deep Learning, MLOps, PyTorch/TensorFlow |
+
+### 8.3 Geographical Concentration (Top Normalized Cities Audit)
+
+Splitting comma-separated multi-city strings and applying canonical alias mapping yields 292 distinct city tokens across India:
+
+| Rank | Normalized Tech Hub | Postings Mentions | Market Concentration Context |
+|:---:|:---|---:|:---|
+| **1** | **Bengaluru** | **5,093** | Dominant Indian tech capital (~42% of all localized postings) |
+| **2** | **Pune** | **2,014** | Primary western automotive and IT analytics hub |
+| **3** | **Hyderabad** | **1,940** | Leading center for cloud enterprise and enterprise data teams |
+| **4** | **Mumbai** | **1,452** | Primary financial analytics and banking data science hub |
+| **5** | **Chennai** | **1,293** | Established SaaS and engineering analytics center |
+| **6** | **Gurugram** | **1,252** | Premier startup, fintech, and multinational consulting hub |
+| **7** | **Delhi** | **780** | National capital region enterprise analytics |
+| **8** | **Noida** | **534** | Major software services and data processing center |
+| **9** | **Kolkata** | **290** | Emerging eastern IT and research center |
+| **10** | **Ahmedabad** | **217** | Rapidly growing western industrial analytics hub |
+
+*Note on Regional Aggregation:* The `Delhi NCR` regional filter in the dashboard is an integrated union of Delhi, Gurugram, Noida, and Greater Noida (combined total: 2,566+ postings).
 
 ### 8.4 Experience Requirements
-- The mean minimum experience required is **2.8 years**, while the mean maximum is **6.4 years**.
-- Entry-level / Fresher opportunities (0–2 years) represent ~18% of postings, indicating that practical portfolio projects are essential for competitive differentiation.
+- **Valid Experience Range Records**: 10,000+ postings with clearly delimited min-max ranges.
+- **Average Minimum Experience Required**: **2.8 years**
+- **Average Maximum Experience Required**: **6.4 years**
+- **Early-Career Threshold**: Entry-level postings (0–2 years) constitute approximately 18% of vacancies, establishing that demonstrable portfolio projects and practical tool mastery are vital prerequisites for campus placements.
 
-### 8.5 Salary Transparency Analysis
-- 100% of records in the provided Naukri dataset lack disclosed numerical compensation fields.
-- The project explicitly confirms this via `/api/salary`, educating students on the prevalence of unadvertised compensation in Indian tech listings and avoiding fabricated estimates.
+### 8.5 Salary Transparency Analysis & Ethical Standards
+- **100% Omission in Source Dataset**: An audit of all 12,000 rows confirms zero numerical salary values advertised in the original listings.
+- **Anti-Hallucination Compliance**: Rather than inventing synthetic regression numbers, the application exposes `/api/salary` to explicitly educate students that Indian recruitment portals predominantly treat compensation as negotiable/unadvertised.
 
 ### 8.6 Limitations
 1. **Platform Specificity**: Reflects Naukri listings only; offline referrals and competitive coding portals (e.g., LinkedIn, AngelList) are unmeasured.

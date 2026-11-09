@@ -127,11 +127,11 @@ story.append(HRFlowable(width='100%', thickness=2, color=primary_color, spaceBef
 
 story.append(Paragraph('JOB MARKET SKILLS AND SALARY ANALYSIS', title_style))
 story.append(Paragraph('Career &amp; Labour Market Analytics (Program Code: DA-021)', subtitle_style))
-story.append(Paragraph('<b>Faculty Mentor:</b> Mr. Unwan Sir', meta_style))
-story.append(Spacer(1, 6))
+story.append(Paragraph('<b>Faculty Mentor:</b> Mr. Unwan Sir &nbsp;|&nbsp; <b>Team Leaders:</b> Harshita Upadhyay (BCS2025411) &amp; Zainul Ali (BCS2025413)', meta_style))
+story.append(Spacer(1, 4))
 
-# Callout Box for Live Deployed Link
-deployed_text = '<b>Live Deployed Project Link (Accessible to Checker):</b><br/><font color="#2457d6"><u>https://job-market-skills-and-salary-analysis.onrender.com/</u></font>'
+# Callout Box for Live Deployed Link & GitHub
+deployed_text = '<b>Live Production Dashboard:</b> <font color="#2457d6"><u>https://job-market-skills-and-salary-analysis.onrender.com/</u></font><br/><b>GitHub Source Code Repository:</b> <font color="#2457d6"><u>https://github.com/upadhyayharshita07-cmd/Job-Market-Skills-and-Salary-Analysis</u></font>'
 callout_data = [[Paragraph(deployed_text, callout_style)]]
 callout_table = Table(callout_data, colWidths=[515])
 callout_table.setStyle(TableStyle([
@@ -147,20 +147,20 @@ story.append(Spacer(1, 8))
 story.append(Paragraph('PROJECT TEAM ROSTER &amp; GIT BRANCH MAPPINGS', h1_style))
 team_data = [
     [Paragraph('S.No.', table_header_style), Paragraph('Student Name', table_header_style), Paragraph('Student ID', table_header_style), Paragraph('Git Branch', table_header_style), Paragraph('Primary Functional Contribution', table_header_style)],
-    [Paragraph('1', table_cell_bold), Paragraph('Harshita Upadhyay (TL)', table_cell_bold), Paragraph('BCS2025411', table_cell_bold), Paragraph('Harshita', table_cell_bold), Paragraph('Team Leader &amp; Architect: Git governance, integration &amp; delivery.', table_cell_style)],
-    [Paragraph('2', table_cell_style), Paragraph('Lokesh Shukla', table_cell_style), Paragraph('BCS2025401', table_cell_style), Paragraph('Lokesh', table_cell_style), Paragraph('Backend Core Developer: Flask routing and exception handling.', table_cell_style)],
-    [Paragraph('3', table_cell_style), Paragraph('Sudhanshu Singh', table_cell_style), Paragraph('BCS2025402', table_cell_style), Paragraph('Sudhanshu', table_cell_style), Paragraph('USP Research Lead: Data-Driven Career Intelligence proposition.', table_cell_style)],
-    [Paragraph('4', table_cell_style), Paragraph('Rishabh Gupta', table_cell_style), Paragraph('BCS2025406', table_cell_style), Paragraph('Rishabh', table_cell_style), Paragraph('Dataset Engineering: Schema definition &amp; column specifications.', table_cell_style)],
-    [Paragraph('5', table_cell_style), Paragraph('Anurag Verma', table_cell_style), Paragraph('BCS2025409', table_cell_style), Paragraph('Anurag', table_cell_style), Paragraph('Data Preprocessing Specialist: Regex design &amp; text sanitation.', table_cell_style)],
-    [Paragraph('6', table_cell_style), Paragraph('Zainul Ali', table_cell_style), Paragraph('BCS2025413', table_cell_style), Paragraph('Zainul', table_cell_style), Paragraph('Frontend UI Lead: CSS Grid/Flexbox design and responsive layouts.', table_cell_style)],
-    [Paragraph('7', table_cell_style), Paragraph('Ayushi', table_cell_style), Paragraph('BCS2025414', table_cell_style), Paragraph('Ayushi', table_cell_style), Paragraph('Frontend DOM Integration: Asynchronous data binding &amp; state handling.', table_cell_style)],
-    [Paragraph('8', table_cell_style), Paragraph('Nilansh Gupta', table_cell_style), Paragraph('BCS2025416', table_cell_style), Paragraph('Nilansh', table_cell_style), Paragraph('Deployment &amp; Performance: Cloud deployment on Render, Gunicorn WSGI, LRU cache.', table_cell_style)],
-    [Paragraph('9', table_cell_style), Paragraph('Pranay Kesarwani', table_cell_style), Paragraph('BCS2025417', table_cell_style), Paragraph('Pranay', table_cell_style), Paragraph('Directory Architecture Lead: Folder structure design &amp; governance.', table_cell_style)],
-    [Paragraph('10', table_cell_style), Paragraph('Mohammad Muneer', table_cell_style), Paragraph('BCS2025418', table_cell_style), Paragraph('Muneer', table_cell_style), Paragraph('Experience Analytics: Range extraction &amp; statistical averages.', table_cell_style)],
-    [Paragraph('11', table_cell_style), Paragraph('Kavyansh Bhadri', table_cell_style), Paragraph('BCS2025419', table_cell_style), Paragraph('Kavyansh', table_cell_style), Paragraph('City Normalization: Comma parsing &amp; location token ranking.', table_cell_style)],
-    [Paragraph('12', table_cell_style), Paragraph('Abhay', table_cell_style), Paragraph('BCS2025421', table_cell_style), Paragraph('Abhay', table_cell_style), Paragraph('Fullstack Feature Engineer: Form search filter integration.', table_cell_style)],
-    [Paragraph('13', table_cell_style), Paragraph('Sarvesh Singh', table_cell_style), Paragraph('BCS2025422', table_cell_style), Paragraph('Sarvesh', table_cell_style), Paragraph('QA &amp; Technical Governance: Glossary preparation &amp; code quality.', table_cell_style)],
-    [Paragraph('14', table_cell_style), Paragraph('Sachin', table_cell_style), Paragraph('BCS2025424', table_cell_style), Paragraph('Sachin', table_cell_style), Paragraph('Salary Ethics Lead: Missing-value audit &amp; ethics disclosure.', table_cell_style)],
+    [Paragraph('1', table_cell_bold), Paragraph('Harshita Upadhyay (TL)', table_cell_bold), Paragraph('BCS2025411', table_cell_bold), Paragraph('Harshita', table_cell_bold), Paragraph('Team Leadership, System Architecture, Project Planning, Overall Coordination &amp; Governance.', table_cell_style)],
+    [Paragraph('2', table_cell_style), Paragraph('Lokesh Shukla', table_cell_style), Paragraph('BCS2025401', table_cell_style), Paragraph('Lokesh', table_cell_style), Paragraph('Backend Core Development, Flask API Routing, Backend Config &amp; Git Ignore Management.', table_cell_style)],
+    [Paragraph('3', table_cell_style), Paragraph('Sudhanshu Singh', table_cell_style), Paragraph('BCS2025402', table_cell_style), Paragraph('Sudhanshu', table_cell_style), Paragraph('USP Formulation, Project Research, MIT License Documentation &amp; Uniqueness.', table_cell_style)],
+    [Paragraph('4', table_cell_style), Paragraph('Rishabh Gupta', table_cell_style), Paragraph('BCS2025406', table_cell_style), Paragraph('Rishabh', table_cell_style), Paragraph('Dataset Engineering, CSV Data Analysis, Dataset Structure &amp; Schema Documentation.', table_cell_style)],
+    [Paragraph('5', table_cell_style), Paragraph('Anurag Verma', table_cell_style), Paragraph('BCS2025409', table_cell_style), Paragraph('Anurag', table_cell_style), Paragraph('Regex-Based Preprocessing, Text Cleaning, Data Preparation &amp; Execution Guide.', table_cell_style)],
+    [Paragraph('6', table_cell_bold), Paragraph('Zainul Ali (TL)', table_cell_bold), Paragraph('BCS2025413', table_cell_bold), Paragraph('Zainul', table_cell_bold), Paragraph('Team Leadership, Frontend UI Development, CSS Styling, Grid &amp; Flexbox Layout.', table_cell_style)],
+    [Paragraph('7', table_cell_style), Paragraph('Ayushi', table_cell_style), Paragraph('BCS2025414', table_cell_style), Paragraph('Ayushi', table_cell_style), Paragraph('Frontend DOM Manipulation, Data Binding, UI State Management &amp; Tech Docs.', table_cell_style)],
+    [Paragraph('8', table_cell_style), Paragraph('Nilansh Gupta', table_cell_style), Paragraph('BCS2025416', table_cell_style), Paragraph('Nilansh', table_cell_style), Paragraph('Application Deployment, Render Hosting, Gunicorn Setup &amp; Cache Management.', table_cell_style)],
+    [Paragraph('9', table_cell_style), Paragraph('Pranay Kesarwani', table_cell_style), Paragraph('BCS2025417', table_cell_style), Paragraph('Pranay', table_cell_style), Paragraph('Project Folder Structure, File Organization, Repository Structure &amp; Documentation.', table_cell_style)],
+    [Paragraph('10', table_cell_style), Paragraph('Mohammad Muneer', table_cell_style), Paragraph('BCS2025418', table_cell_style), Paragraph('Muneer', table_cell_style), Paragraph('Experience Analytics, Average Experience Calculation &amp; Future Enhancement Suggestions.', table_cell_style)],
+    [Paragraph('11', table_cell_style), Paragraph('Kavyansh Bhadri', table_cell_style), Paragraph('BCS2025419', table_cell_style), Paragraph('Kavyansh', table_cell_style), Paragraph('City Name Normalization, Location Tokenization, Dataset Limitations &amp; Standardization.', table_cell_style)],
+    [Paragraph('12', table_cell_style), Paragraph('Abhay', table_cell_style), Paragraph('BCS2025421', table_cell_style), Paragraph('Abhay', table_cell_style), Paragraph('Full-Stack Integration, Search Functionality, Filter Implementation &amp; Connectivity.', table_cell_style)],
+    [Paragraph('13', table_cell_style), Paragraph('Sarvesh Singh', table_cell_style), Paragraph('BCS2025422', table_cell_style), Paragraph('Sarvesh', table_cell_style), Paragraph('Quality Assurance, Testing, Technical Documentation &amp; Basic Terminology.', table_cell_style)],
+    [Paragraph('14', table_cell_style), Paragraph('Sachin', table_cell_style), Paragraph('BCS2025424', table_cell_style), Paragraph('Sachin', table_cell_style), Paragraph('Salary Ethics Audit, Salary Boundary Verification, Data Accuracy &amp; Interpretation.', table_cell_style)],
 ]
 
 t = Table(team_data, colWidths=[24, 115, 62, 58, 256])

@@ -16,7 +16,7 @@
 - **Sub-heading:** Transforming 12,000 Indian Tech Job Postings into Data-Driven Career Intelligence
 - **Course & Institution:** B.Tech Computer Science & Engineering (2nd Year), CSED
 - **Faculty Mentor:** Mr. Unwan Sir
-- **Team Leader:** Harshita Upadhyay (`BCS2025411`)
+- **Team Leaders:** Harshita Upadhyay (`BCS2025411`) & Zainul Ali (`BCS2025413`)
 - **Live Demo:** `https://job-market-skills-and-salary-analysis.onrender.com/`
 
 > **Speaker Notes:**  
@@ -62,7 +62,7 @@
 | **3** | **Sudhanshu Singh** | **BCS2025402** | `Sudhanshu` | USP Formulation & Strategic Research |
 | **4** | **Rishabh Gupta** | **BCS2025406** | `Rishabh` | Dataset Engineering & Schema Definition |
 | **5** | **Anurag Verma** | **BCS2025409** | `Anurag` | Data Preprocessing & Text Sanitation |
-| **6** | **Zainul Ali** | **BCS2025413** | `Zainul` | Frontend UI Design & CSS Architecture |
+| **6** | **Zainul Ali (TL)** | **BCS2025413** | `Zainul` | Team Leader & Frontend UI Architecture |
 | **7** | **Ayushi** | **BCS2025414** | `Ayushi` | Frontend DOM Logic & Asynchronous State |
 | **8** | **Nilansh Gupta** | **BCS2025416** | `Nilansh` | Cloud Deployment, WSGI & LRU Caching |
 | **9** | **Pranay Kesarwani** | **BCS2025417** | `Pranay` | Directory Hierarchy & Repo Governance |
