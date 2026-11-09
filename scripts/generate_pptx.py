@@ -190,7 +190,7 @@ slides_data = [
         [
             "Center for Skill and Entrepreneurship Development (CSED)",
             "Faculty Mentor: Mr. Unwan Sir",
-            "Team Leader: Harshita Upadhyay (Student ID: BCS2025411)",
+            "Team Leaders: Harshita Upadhyay (BCS2025411) & Zainul Ali (BCS2025413)",
             "Live Deployed Project URL: https://job-market-skills-and-salary-analysis.onrender.com/",
             "Dataset: 12,000 Verified Naukri Job Postings across India"
         ]
@@ -225,7 +225,7 @@ slides_data = [
             "Sudhanshu Singh (BCS2025402) - Branch: Sudhanshu | USP Formulation &amp; Research",
             "Rishabh Gupta (BCS2025406) - Branch: Rishabh | Dataset Engineering &amp; Schema",
             "Anurag Verma (BCS2025409) - Branch: Anurag | Regex Preprocessing &amp; Text Cleaning",
-            "Zainul Ali (BCS2025413) - Branch: Zainul | Frontend CSS Grid/Flexbox UI",
+            "Zainul Ali (TL, BCS2025413) - Branch: Zainul | Team Leadership &amp; Frontend UI",
             "Ayushi (BCS2025414) - Branch: Ayushi | Frontend DOM Data Binding &amp; State",
             "Nilansh Gupta (BCS2025416) - Branch: Nilansh | Render Deployment, Gunicorn &amp; Cache",
             "Pranay Kesarwani (BCS2025417) - Branch: Pranay | Folder Structure &amp; Governance",

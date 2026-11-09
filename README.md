@@ -9,6 +9,7 @@
 > **B.Tech Computer Science & Engineering (2nd Year) — IIOT / PBL Project**  
 > **Center for Skill and Entrepreneurship Development (CSED)**  
 > **Faculty Mentor:** Mr. Unwan Sir  
+> **Team Leaders:** Harshita Upadhyay (`BCS2025411`) & Zainul Ali (`BCS2025413`)  
 
 ---
 
@@ -46,10 +47,13 @@ Statistical ranking of       Transforms noisy aliases        Transparent reporti
 guide student learning.      'Bangalore' -> Bengaluru).      zero hallucination or fake ML.
 ```
 
-1. **Evidence-Based Learning Roadmap**: Direct empirical validation of skill demand (Python, SQL, Machine Learning, AWS, Excel, Power BI).
-2. **Transparent Skill & Location Normalization**: Resolves spelling variations, abbreviations, and composite city names without losing original source context.
-3. **Conservative 18-Tier Role Taxonomy**: Heuristically maps complex, vendor-specific job titles into standard industry role categories (e.g., *Data Engineer*, *Data Scientist*, *Machine Learning Engineer*).
-4. **Anti-Hallucination Data Ethics**: Explicitly reports that salary information is omitted in the source dataset rather than fabricating synthetic salary estimates.
+1. **Evidence-Based Skill Demand Analysis**: Direct statistical validation of core technologies (Python, SQL, Machine Learning, AWS, Excel, Power BI) across 12,000 real job postings.
+2. **Role-Specific Skill Profiling**: Distinct skill breakdowns across 18 standardized job families (contrasting Data Engineers, Data Scientists, and Data Analysts).
+3. **Deterministic Skill Normalization**: Canonical alias dictionary resolving variations (`py` → Python, `js` → JavaScript) and filtering noisy generic strings.
+4. **Salary Transparency & Anti-Hallucination Policy**: Honest academic reporting that salary data is unadvertised; zero fake ML or fabricated estimates.
+5. **Geographical Hub Analysis & City Tokenization**: Unrolls comma-separated multi-cities, maps aliases (Bangalore → Bengaluru), and clusters regional hubs (Delhi NCR).
+6. **Experience Requirement Profiling**: Regex-driven min/max experience range extraction and cohort mathematical averages.
+7. **High-Performance Caching & Reproducible Cloud Pipeline**: In-memory `@lru_cache` delivering sub-15ms REST responses with automated CI/CD on Render.
 
 ---
 
@@ -59,20 +63,20 @@ Every member of our 14-student project team collaborated via dedicated GitHub fe
 
 | S.No. | Student Name | Student ID | Git Branch | Core Role & Key Contributions |
 |:---:|:---|:---:|:---:|:---|
-| **1** | **Harshita Upadhyay** | **BCS2025411** | `Harshita` *(TL)* | **Team Leader & Project Architect**: Overall coordination, Git merge management, repo organization, and project delivery. |
-| **2** | **Lokesh Shukla** | **BCS2025401** | `Lokesh` | **Backend Core Developer**: Flask API routes, error handlers, and server setup. |
-| **3** | **Sudhanshu Singh** | **BCS2025402** | `Sudhanshu` | **USP Research & Documentation**: Formulated project USP (*Data-Driven Career Intelligence*) and value proposition. |
-| **4** | **Rishabh Gupta** | **BCS2025406** | `Rishabh` | **Dataset Engineering Lead**: Schema specifications, column definitions, and data documentation. |
-| **5** | **Anurag Verma** | **BCS2025409** | `Anurag` | **Data Preprocessing Specialist**: Regex pattern design, text sanitation, and whitespace normalization. |
-| **6** | **Zainul Ali** | **BCS2025413** | `Zainul` | **Frontend UI & Styling Lead**: Modern CSS Grid/Flexbox architecture, hero banner styling, and card aesthetics. |
-| **7** | **Ayushi** | **BCS2025414** | `Ayushi` | **Frontend DOM & State Integration**: Asynchronous API data binding, ranked lists rendering, and empty states. |
-| **8** | **Nilansh Gupta** | **BCS2025416** | `Nilansh` | **Deployment & Performance Engineer**: Render cloud deployment, Gunicorn configuration, LRU caching, and data quality audit. |
-| **9** | **Pranay Kesarwani** | **BCS2025417** | `Pranay` | **Directory Architecture Lead**: Module boundaries, folder structure design, and file hierarchy documentation. |
-| **10** | **Mohammad Muneer** | **BCS2025418** | `Muneer` | **Experience & Statistical Analytics**: Extraction and computation of minimum/maximum work experience ranges. |
-| **11** | **Kavyansh Bhadri** | **BCS2025419** | `Kavyansh` | **Entity Extraction & City Mapping**: Multi-city comma splitting, location frequency ranking, and regional filtering. |
-| **12** | **Abhay** | **BCS2025421** | `Abhay` | **Fullstack Feature Engineer**: Integration of dynamic frontend search filters with backend API parameters. |
-| **13** | **Sarvesh Singh** | **BCS2025422** | `Sarvesh` | **QA & Technical Governance**: Code quality validation, edge-case testing, and technical documentation. |
-| **14** | **Sachin** | **BCS2025424** | `Sachin` | **Salary Analysis & Ethical Boundaries**: Salary coverage audit, missing-value disclosure reporting, and data ethics. |
+| **1** | **Harshita Upadhyay** | **BCS2025411** | `Harshita` *(TL)* | **Team Leadership & System Architecture**: Project Planning, Overall Coordination, Architecture & Governance. |
+| **2** | **Lokesh Shukla** | **BCS2025401** | `Lokesh` | **Backend Core Development**: Flask API Routing, Backend Configuration and Git Ignore Management. |
+| **3** | **Sudhanshu Singh** | **BCS2025402** | `Sudhanshu` | **USP Formulation & Research**: Project Research, MIT License Documentation and Project Uniqueness. |
+| **4** | **Rishabh Gupta** | **BCS2025406** | `Rishabh` | **Dataset Engineering**: CSV Data Analysis, Dataset Structure and Schema Documentation. |
+| **5** | **Anurag Verma** | **BCS2025409** | `Anurag` | **Regex-Based Preprocessing**: Text Cleaning, Data Preparation and Project Execution Instructions. |
+| **6** | **Zainul Ali** | **BCS2025413** | `Zainul` *(TL)* | **Team Leadership & Frontend UI Development**: CSS Styling, Grid and Flexbox Layout Design, Team Coordination. |
+| **7** | **Ayushi** | **BCS2025414** | `Ayushi` | **Frontend DOM Manipulation**: Data Binding, UI State Management and Technology Documentation. |
+| **8** | **Nilansh Gupta** | **BCS2025416** | `Nilansh` | **Application Deployment**: Render Hosting Configuration, Gunicorn Setup and Cache Management. |
+| **9** | **Pranay Kesarwani** | **BCS2025417** | `Pranay` | **Project Folder Structure**: File Organization, Repository Structure and Project Documentation. |
+| **10** | **Mohammad Muneer** | **BCS2025418** | `Muneer` | **Experience Analytics**: Average Experience Calculation, Analytical Improvements and Future Enhancement Suggestions. |
+| **11** | **Kavyansh Bhadri** | **BCS2025419** | `Kavyansh` | **City Name Normalization**: Location Tokenization, Dataset Limitations and Data Standardization. |
+| **12** | **Abhay** | **BCS2025421** | `Abhay` | **Full-Stack Integration**: Search Functionality, Filter Implementation and Frontend-Backend Connectivity. |
+| **13** | **Sarvesh Singh** | **BCS2025422** | `Sarvesh` | **Quality Assurance & Testing**: Technical Documentation, Testing and Basic Technical Terminology. |
+| **14** | **Sachin** | **BCS2025424** | `Sachin` | **Salary Ethics Audit**: Salary Data Boundary Verification, Data Accuracy and Responsible Data Interpretation. |
 
 ---
 
@@ -221,5 +225,5 @@ The application configuration is also declared in `render.yaml` for instant Blue
 - **Institution**: Center for Skill and Entrepreneurship Development (CSED)
 - **Department**: Department of Computer Science & Engineering
 - **Program Code**: DA-021 (Career & Labour Market Analytics)
-- **Team Leader**: Harshita Upadhyay (Student ID: `BCS2025411`)
+- **Team Leaders**: Harshita Upadhyay (Student ID: `BCS2025411`) & Zainul Ali (Student ID: `BCS2025413`)
 - **Live URL**: [https://job-market-skills-and-salary-analysis.onrender.com/](https://job-market-skills-and-salary-analysis.onrender.com/)
