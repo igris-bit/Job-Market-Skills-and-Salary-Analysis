@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation — Job Market Skills & Salary Analysis</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@600;700;800&display=swap">
+  <style>
+    :root {
+      --primary: #173eaa;
+      --secondary: #2457d6;
+      --accent: #00d2ff;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #0b1938 0%, #173eaa 50%, #1e293b 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+    header.deck-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+    .deck-title { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.05rem; }
+    .live-badge {
+      background: #10b981;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .live-badge:hover { background: #059669; transform: scale(1.04); }
+    main.deck-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 580px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      padding: 48px;
+      animation: fadeIn 0.35s ease;
+      position: relative;
+    }
+    .slide.active { display: flex; flex-direction: column; justify-content: space-between; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-header { margin-bottom: 24px; }
+    .slide-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--secondary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .slide-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .slide-body {
+      flex: 1;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: #334155;
+    }
+    .slide-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 14px;
+    }
+    .slide-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 14px;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .card p, .card ul { font-size: 0.94rem; color: #475569; }
+    ul.feature-list { list-style: none; margin-top: 10px; }
+    ul.feature-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    ul.feature-list li::before {
+      content: "✓";
+      color: var(--secondary);
+      font-weight: 800;
+    }
+    table.slide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 10px;
+    }
+    table.slide-table th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    table.slide-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    table.slide-table tr:nth-child(even) td { background: #f8fafc; }
+    .hero-slide {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      height: 100%;
+    }
+    .hero-slide h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.15;
+    }
+    .hero-slide p.subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 750px;
+    }
+    .speaker-note-box {
+      margin-top: 20px;
+      padding: 12px 18px;
+      background: #eff6ff;
+      border-left: 4px solid var(--secondary);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: #1e3a8a;
+      font-style: italic;
+    }
+    footer.deck-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+    .nav-buttons { display: flex; gap: 12px; }
+    button.deck-btn {
+      background: var(--secondary);
+      border: 0;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    button.deck-btn:hover { background: #1d4ed8; }
+    button.deck-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .slide-counter { font-size: 0.95rem; font-weight: 600; color: #cbd5e1; }
+    .keyboard-hint { font-size: 0.8rem; color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+  <header class="deck-bar">
+    <div class="deck-title">Job Market Skills &amp; Salary Analysis — B.Tech CSE Project</div>
+    <a href="https://job-market-skills-and-salary-analysis.onrender.com/" target="_blank" class="live-badge">🚀 Open Live Project</a>
+  </header>
+
+  <main class="deck-container">
+    
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+      <div class="hero-slide">
+        <p class="slide-eyebrow">B.Tech 2nd Year IIOT / PBL Project (DA-021)</p>
+        <h1>Job Market Skills &amp; Salary Analysis</h1>
+        <p class="subtitle">Turning 12,000 Indian Tech Job Postings into Empirical, Data-Driven Career Intelligence</p>
+        <div style="margin-top: 20px; text-align: center;">
+          <p><strong>Institution:</strong> Center for Skill and Entrepreneurship Development (CSED)</p>
+          <p><strong>Department:</strong> Computer Science &amp; Engineering | <strong>Faculty Mentor:</strong> Mr. Unwan Sir</p>
+          <p><strong>Team Leaders:</strong> Harshita Upadhyay (Student ID: BCS2025411) &amp; Zainul Ali (Student ID: BCS2025413)</p>
+        </div>
+      </div>
+      <div class="speaker-note-box">
+        <strong>Speaker Note:</strong> Welcome examiners and faculty. Today our 14-member team presents our deployed Career Intelligence platform.
+      </div>
+    </div>
+
+    <!-- Slide 2: Problem Statement -->
+    <div class="slide">
+      <div class="slide-header">
+        <p class="slide-eyebrow">Industry Context &amp; Motivation</p>
+        <h2 class="slide-title">The Challenge Facing Engineering Students</h2>
+      </div>
+      <div class="slide-body">
+        <div class="slide-grid-2">
+          <div class="card">
+            <h3>Curriculum vs Industry Gap</h3>
+            <p>Students face profound ambiguity about which programming languages and toolsets are in highest demand by hiring managers.</p>
+          </div>
+          <div class="card">
+            <h3>Subjective Career Advice</h3>
+            <p>Advice from blogs or social media is unverified, noisy, and often pushes short-term hype over structural demand.</p>
+          </div>
+          <div class="card">
+            <h3>Messy Recruitment Data</h3>
+            <p>Job postings feature conflicting abbreviations (py vs Python), multi-city tags, and unstandardized job titles.</p>
+          </div>
+          <div class="card">
+            <h3>Fake Salary Predictions</h3>
+            <p>Many academic projects train unvalidated ML models that invent salaries on datasets where salary was never disclosed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-box">
+        <strong>Speaker Note:</strong> We set out to replace anecdotal opinions with reproducible data science on authentic job postings.
+      </div>
+    </div>
+
+    <!-- Slide 3: Main USP -->
+    <div class="slide">
+      <div class="slide-header">
+        <p class="slide-eyebrow">Competitive Advantage</p>
+        <h2 class="slide-title">Our Main USP: Data-Driven Career Intelligence</h2>
+      </div>
+      <div class="slide-body">
+        <div class="slide-grid-2">
+          <div class="card">
+            <h3>1. Empirical Evidence</h3>
+            <p>Quantitative ranking of skills derived from 12,000 authentic job postings across India to build a high-ROI learning roadmap.</p>
+          </div>
+          <div class="card">
+            <h3>2. Smart Standardization</h3>
+            <p>Deterministic alias mapping for skills (Python, SQL, AWS) and locations (Bengaluru, Hyderabad, Delhi NCR) without losing source data.</p>
+          </div>
+          <div class="card">
+            <h3>3. 18-Tier Role Taxonomy</h3>
+            <p>Heuristically groups complex job titles into clean industry role families while preserving original employer titles.</p>
+          </div>
+          <div class="card">
+            <h3>4. Anti-Hallucination Ethics</h3>
+            <p>Strict data ethics: openly disclosing missing salary coverage rather than fabricating synthetic compensation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-box">
+        <strong>Speaker Note:</strong> Our USP is Data-Driven Career Intelligence: evidence-based, normalized, categorized, and ethically transparent.
+      </div>
+    </div>
+
+    <!-- Slide 4: Team Members Roster -->
+    <div class="slide">
+      <div class="slide-header">
+        <p class="slide-eyebrow">Project Organization</p>
+        <h2 class="slide-title">14-Member Team Roster &amp; Git Branches</h2>
+      </div>
+      <div class="slide-body">
+        <table class="slide-table">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Student Name</th>
+              <th>Student ID</th>
+              <th>Git Branch</th>
+              <th>Core Responsibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td><strong>Harshita Upadhyay (TL)</strong></td><td><strong>BCS2025411</strong></td><td><code>Harshita</code></td><td>Team Leader &amp; Architect: Git governance, integration &amp; delivery</td></tr>
+            <tr><td>2</td><td>Lokesh Shukla</td><td>BCS2025401</td><td><code>Lokesh</code></td><td>Backend Core Developer: Flask API routing &amp; error handling</td></tr>
+            <tr><td>3</td><td>Sudhanshu Singh</td><td>BCS2025402</td><td><code>Sudhanshu</code></td><td>USP Research Lead: Data-Driven Career Intelligence</td></tr>
+            <tr><td>4</td><td>Rishabh Gupta</td><td>BCS2025406</td><td><code>Rishabh</code></td><td>Dataset Engineering: Schema definition &amp; verification</td></tr>
+            <tr><td>5</td><td>Anurag Verma</td><td>BCS2025409</td><td><code>Anurag</code></td><td>Data Preprocessing: Regex sanitation &amp; text cleaning</td></tr>
+            <tr><td><strong>6</strong></td><td><strong>Zainul Ali (TL)</strong></td><td><strong>BCS2025413</strong></td><td><code>Zainul</code></td><td>Team Leader &amp; Frontend UI: CSS Grid/Flexbox styling &amp; layouts</td></tr>
+            <tr><td>7</td><td>Ayushi</td><td>BCS2025414</td><td><code>Ayushi</code></td><td>Frontend DOM: Asynchronous data binding &amp; state handling</td></tr>
+            <tr><td>8</td><td>Nilansh Gupta</td><td>BCS2025416</td><td><code>Nilansh</code></td><td>Cloud Deployment on Render, Gunicorn WSGI &amp; LRU caching</td></tr>
+            <tr><td>9</td><td>Pranay Kesarwani</td><td>BCS2025417</td><td><code>Pranay</code></td><td>Directory Architecture Lead: Repo structure &amp; governance</td></tr>
+            <tr><td>10</td><td>Mohammad Muneer</td><td>BCS2025418</td><td><code>Muneer</code></td><td>Experience Analytics: Distribution modeling &amp; averages</td></tr>
+            <tr><td>11</td><td>Kavyansh Bhadri</td><td>BCS2025419</td><td><code>Kavyansh</code></td><td>City Normalization: Comma parsing &amp; location ranking</td></tr>
+            <tr><td>12</td><td>Abhay</td><td>BCS2025421</td><td><code>Abhay</code></td><td>Fullstack Engineer: Form search filter integration</td></tr>
+            <tr><td>13</td><td>Sarvesh Singh</td><td>BCS2025422</td><td><code>Sarvesh</code></td><td>QA &amp; Technical Governance: Glossary &amp; code quality</td></tr>
+            <tr><td>14</td><td>Sachin</td><td>BCS2025424</td><td><code>Sachin</code></td><td>Salary Ethics Lead: Missing-value audit &amp; transparency</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="speaker-note-box">
+        <strong>Speaker Note:</strong> Every team member contributed code through their own dedicated GitHub branch.
+      </div>
+    </div>
+
+    <!-- Slide 5: System Architecture -->
+    <div class="slide">
+      <div class="slide-header">
+        <p class="slide-eyebrow">Engineering Design</p>
+        <h2 class="slide-title">System Architecture &amp; Tech Stack</h2>
+      </div>
+      <div class="slide-body">
+        <div class="slide-grid-3">
+          <div class="card">
+            <h3>Frontend Tier</h3>
+            <p><strong>Semantic HTML5 + CSS3 + Vanilla ES6 JS</strong></p>
+            <ul class="feature-list">
+              <li>Zero bloated bundlers (Webpack/Vite)</li>
+              <li>Sub-second initial page load</li>
+              <li>Responsive CSS Grid &amp; Flexbox</li>
+              <li>Defensive DOM node injection</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Application Tier</h3>
+            <p><strong>Python 3.10+ / Flask 3.x</strong></p>
+            <ul class="feature-list">
+              <li>In-memory Pandas caching via @lru_cache</li>
+              <li>Sub-15ms REST API query latency</li>
+              <li>Gunicorn WSGI production web server</li>
+              <li>Clean REST API endpoints</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Deployment Tier</h3>
+            <p><strong>Render Cloud Platform</strong></p>
+            <ul class="feature-list">
+              <li>Continuous deployment from GitHub</li>
+              <li>Automated health monitoring (/api/health)</li>
+              <li>Production SSL/HTTPS encryption</li>
+              <li>render.yaml &amp; Procfile declared</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-box">
+        <strong>Speaker Note:</strong> We selected a high-performance stack combining Flask with in-memory caching for sub-15ms latency.
+      </div>
+    </div>
+
+    <!-- Slide 6: Dataset Findings -->
+    <div class="slide">
+      <div class="slide-header">
+        <p class="slide-eyebrow">Empirical Results</p>
+        <h2 class="slide-title">Quantitative Insights from 12,000 Postings</h2>
+      </div>
+      <div class="slide-body">
+        <div class="slide-grid-2">
+          <div class="card">
+            <h3>Most Demanded Skills</h3>
+            <p><strong>1. Python:</strong> Over 1,500 mentions (#1 language across ML &amp; Data Engineering)</p>
+            <p><strong>2. SQL:</strong> Foundational requirement across 85% of analytical roles</p>
+            <p><strong>3. Machine Learning &amp; AWS:</strong> Cloud and predictive analytics demand</p>
+          </div>
+          <div class="card">
+            <h3>Employment Geography</h3>
+            <p><strong>1. Bengaluru:</strong> 5,093 mentions (~42% of all localized postings)</p>
+            <p><strong>2. Pune (2,014) &amp; Hyderabad (1,940):</strong> Key secondary tech hubs</p>
+            <p><strong>3. Delhi NCR &amp; Mumbai:</strong> Major corporate analytics centers</p>
+          </div>
+          <div class="card">
+            <h3>Job Role Breakdown</h3>
+            <p><strong>Data Engineer:</strong> ~27% of dataset (Massive infrastructure demand)</p>
+            <p><strong>Data Scientist:</strong> ~11% (Advanced modeling &amp; statistics)</p>
+            <p><strong>Business / Data Analyst:</strong> ~15% (KPI tracking &amp; dashboards)</p>
+          </div>
+          <div class="card">
+            <h3>Experience &amp; Salary</h3>
+            <p><strong>Average Minimum:</strong> 2.8 Years | <strong>Average Maximum:</strong> 6.4 Years</p>
+            <p><strong>Fresher (0–2 yrs):</strong> ~18% (Demands hands-on project proof)</p>
+            <p><strong>Salary Disclosed:</strong> 0% (Explicitly disclosed as unavailable)</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-box">
+        <strong>Speaker Note:</strong> Python and SQL dominate skills, Bengaluru leads location, and Data Engineering leads roles.
+      </div>
+    </div>
+
+    <!-- Slide 7: Live Demo & Conclusion -->
+    <div class="slide">
+      <div class="hero-slide">
+        <p class="slide-eyebrow">Production Application</p>
+        <h1>Live Project Demonstration</h1>
+        <p class="subtitle">Experience the live deployed system on Render:</p>
+        <a href="https://job-market-skills-and-salary-analysis.onrender.com/" target="_blank" class="live-badge" style="font-size: 1.1rem; padding: 12px 28px; margin-top: 10px;">
+          👉 Launch https://job-market-skills-and-salary-analysis.onrender.com/
+        </a>
+        <div style="margin-top: 24px;">
+          <p><strong>Thank you, Respected Mentors and Evaluators!</strong></p>
+          <p style="color: var(--muted); font-size: 0.95rem; margin-top: 4px;">Harshita Upadhyay (TL) &amp; The Entire 14-Member Project Team</p>
+        </div>
+      </div>
+      <div class="speaker-note-box">
+        <strong>Speaker Note:</strong> We now direct your attention to the live browser dashboard to test search, filter, and pagination.
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="deck-controls">
+    <div class="nav-buttons">
+      <button class="deck-btn" id="prevBtn" onclick="prevSlide()">← Previous</button>
+      <button class="deck-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+    </div>
+    <div class="slide-counter" id="slideCounter">Slide 1 of 7</div>
+    <div class="keyboard-hint">Use <strong>Left / Right Arrow Keys</strong> or Space to Navigate</div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function updateDeck() {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('active', idx === currentSlide);
+      });
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+      document.getElementById('prevBtn').disabled = (currentSlide === 0);
+      document.getElementById('nextBtn').disabled = (currentSlide === slides.length - 1);
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateDeck();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateDeck();
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'n') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'p') {
+        prevSlide();
+      }
+    });
+
+    updateDeck();
+  </script>
+</body>
+</html>
+
